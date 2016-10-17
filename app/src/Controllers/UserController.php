@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Cartalyst\Sentinel\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -13,21 +13,23 @@ final class UserController
     private $view;
     private $logger;
     private $user;
+    private $sentinel;
 
     public function __construct($view, LoggerInterface $logger, $user)
     {
         $this->view = $view;
         $this->logger = $logger;
-		$this->model = $user;
+        $this->model = $user;
+        $this->sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args)
     {
         $this->logger->info("Home page action dispatched");
 
-		$users = $this->model->show();
+        $users = $this->model->show();
 
-		return $this->view->render($response, 'users.twig', ["data" => $users]);
+        return $this->view->render($response, 'users.twig', ["data" => $users]);
     }
 
     /**
@@ -43,16 +45,12 @@ final class UserController
             'password' => $password
         ];
 
-        $userInterface = \Cartalyst\Sentinel\Sentinel::authenticate($credentials);
+        $userInterface = $this->sentinel->authenticate($credentials);
 
         if($userInterface instanceof UserInterface){
-           /**
-            * ça marche
-            */
+            echo '<script>alert("ça marche")</script>';
         }else{
-            /**
-             * ça marche pas
-             */
+            echo '<script>alert("ça marche pas")</script>';
         }
 
     }
