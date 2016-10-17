@@ -685,6 +685,27 @@ class Request extends Message implements ServerRequestInterface
     }
 
     /**
+     * Fetch cookie value from cookies sent by the client to the server.
+     *
+     * Note: This method is not part of the PSR-7 standard.
+     *
+     * @param string $name    The attribute name.
+     * @param mixed  $default Default value to return if the attribute does not exist.
+     *
+     * @return mixed
+     */
+    public function getCookieParam($key, $default = null)
+    {
+        $cookies = $this->getCookieParams();
+        $result = $default;
+        if (isset($cookies[$key])) {
+            $result = $cookies[$key];
+        }
+
+        return $result;
+    }
+
+    /**
      * Return an instance with the specified cookies.
      *
      * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
@@ -967,9 +988,15 @@ class Request extends Message implements ServerRequestInterface
         }
 
         $mediaType = $this->getMediaType();
-        $body = (string)$this->getBody();
+
+        // look for a media type with a structured syntax suffix (RFC 6839)
+        $parts = explode('+', $mediaType);
+        if (count($parts) >= 2) {
+            $mediaType = 'application/' . $parts[count($parts)-1];
+        }
 
         if (isset($this->bodyParsers[$mediaType]) === true) {
+            $body = (string)$this->getBody();
             $parsed = $this->bodyParsers[$mediaType]($body);
 
             if (!is_null($parsed) && !is_object($parsed) && !is_array($parsed)) {
@@ -978,9 +1005,10 @@ class Request extends Message implements ServerRequestInterface
                 );
             }
             $this->bodyParsed = $parsed;
+            return $this->bodyParsed;
         }
 
-        return $this->bodyParsed;
+        return null;
     }
 
     /**
@@ -1021,6 +1049,20 @@ class Request extends Message implements ServerRequestInterface
         $clone->bodyParsed = $data;
 
         return $clone;
+    }
+
+    /**
+     * Force Body to be parsed again.
+     *
+     * Note: This method is not part of the PSR-7 standard.
+     *
+     * @return self
+     */
+    public function reparseBody()
+    {
+        $this->bodyParsed = false;
+
+        return $this;
     }
 
     /**
