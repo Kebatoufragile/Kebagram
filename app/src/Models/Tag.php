@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
-{
-  protected $table = "User";
+class Tag extends Model{
+
+  protected $table = "Tag";
   protected $primaryKey = "uId";
+
 }
