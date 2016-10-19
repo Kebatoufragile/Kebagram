@@ -153,7 +153,7 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -182,15 +182,15 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
     );
 
     public static $classMap = array (
-        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/src/Controllers/HomeController.php',
-        'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/src/Controllers/UserController.php',
-        'App\\Models\\User' => __DIR__ . '/../..' . '/app/src/Models/User.php',
-        'App\\Repositories\\BaseRepository' => __DIR__ . '/../..' . '/app/src/Repositories/BaseRepository.php',
-        'App\\Repositories\\HomeRepository' => __DIR__ . '/../..' . '/app/src/Repositories/HomeRepository.php',
-        'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/app/src/Repositories/UserRepository.php',
-        'App\\Services\\LoremIpsumGenerator' => __DIR__ . '/../..' . '/app/src/Services/LoremIpsumGenerator.php',
-        'App\\Services\\Mailer' => __DIR__ . '/../..' . '/app/src/Services/Mailer.php',
-        'App\\Services\\Media' => __DIR__ . '/../..' . '/app/src/Services/Media.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/src/Controllers/HomeController.php',
+        'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/src/Controllers/UserController.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/src/Models/User.php',
+        'App\\Repositories\\BaseRepository' => __DIR__ . '/../..' . '/src/Repositories/BaseRepository.php',
+        'App\\Repositories\\HomeRepository' => __DIR__ . '/../..' . '/src/Repositories/HomeRepository.php',
+        'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/src/Repositories/UserRepository.php',
+        'App\\Services\\LoremIpsumGenerator' => __DIR__ . '/../..' . '/src/Services/LoremIpsumGenerator.php',
+        'App\\Services\\Mailer' => __DIR__ . '/../..' . '/src/Services/Mailer.php',
+        'App\\Services\\Media' => __DIR__ . '/../..' . '/src/Services/Media.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Cartalyst\\Sentinel\\Activations\\ActivationInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Activations/ActivationInterface.php',
