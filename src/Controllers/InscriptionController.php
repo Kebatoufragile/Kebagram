@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-require '../../../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Cartalyst\Sentinel\Sentinel;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -17,7 +17,7 @@ class InscriptionController
         if(isset($_POST['inscription'])){
 
             $data = new DB();
-            $data->addConnection(parse_ini_file('../../../../db_config.ini'));
+            $data->addConnection(parse_ini_file('../../db_config.ini'));
             $data->setAsGlobal();
             $data->bootEloquent();
 
