@@ -2,12 +2,21 @@
 <html lang="en">
 {% block head %}
     <meta charset="UTF-8">
-    {%  block title %}  Inscription à Kebagram {% end block %}
+    {% block title %}  Inscription à Kebagram {% end block %}
 {% end block %}
 
 {% block body %}
 
+    <form action="/register/" method="post">
+      <input name="pseudo" type="text" autocomplete="off" placeholder="Pseudonyme" autofocus required/>
+      <input name="mdp" type="password" autocomplete="off" placeholder="Pseudonyme" required/>
+      <input name="nom" type="text" autocomplete="off" placeholder="Nom"  required/>
+      <input name="prenom" type="text" autocomplete="off" placeholder="Prenom" required/>
+      <input name="email" type="text" autocomplete="off" placeholder="email" required/>
+      <input name="datenaiss" type="date" autocomplete="off" placeholder="Date de Naissance" required/>
+      <input type="submit" name="inscription" value="inscription"/>
 
+    </form>
 
 {% endblock %}
 
