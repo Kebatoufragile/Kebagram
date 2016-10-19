@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Controllers;
+namespace controller;
 
 use Cartalyst\Sentinel\Users\UserInterface;
+use controller\AbstractController;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 
-final class LoginController{
+final class LoginController extends AbstractController{
 
 
     public function __construct($view, LoggerInterface $logger, $user)
