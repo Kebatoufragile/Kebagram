@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace controller;
 
 require '../vendor/autoload.php';
 
@@ -9,7 +9,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use App\Models\User;
 
 
-class InscriptionController
+class InscriptionController extends AbstractController
 {
 
     public function inscription(){
