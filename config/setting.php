@@ -20,7 +20,7 @@ return [
             'name' => 'slim-app',
             'path' => PATH_ROOT.'../storage/log/server.log',
         ],
-		
+
 		// Facebook App
 		'facebook' => [
 			'app_id' => '',
