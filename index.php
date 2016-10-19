@@ -19,9 +19,6 @@ $container['view'] = function($container){
   return $view;
 };
 
-
-var_dump($app);
-
 $app->get('/', function($request, $response, $args){
 
     return $this->view->render($response, 'login.twig', array());
