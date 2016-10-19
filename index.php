@@ -10,7 +10,7 @@ $container = $app->getContainer();
 
 $container['view'] = function($container){
   $view = new \Slim\Views\Twig('src/Templates', [
-    'cache' => 'src/Templates'
+    'cache' => 'storage/cache'
   ]);
 
   $basePath = rtrim(str_ireplace("index.php", '', $container['request']->getUri()->getBasePath()), '/');
@@ -24,9 +24,7 @@ var_dump($app);
 
 $app->get('/', function($request, $response, $args){
 
-    return $this->view->render($response, 'login.twig', [
-      'name' => $args['name']
-    ]);
+    return $this->view->render($response, 'login.twig', array());
 
 })->setName('acceuil');
 
