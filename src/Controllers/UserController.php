@@ -31,27 +31,4 @@ final class UserController
 
         return $this->view->render($response, 'users.twig', ["data" => $users]);
     }
-
-    /**
-     * Authenticate the user if the credentials are correct
-     *
-     * @param $username username or mail address
-     * @param $password
-     *
-     */
-    public function authenticateUser($username, $password){
-        $credentials = [
-            'username' => $username,
-            'password' => $password
-        ];
-
-        $userInterface = $this->sentinel->authenticate($credentials);
-
-        if($userInterface instanceof UserInterface){
-            echo '<script>alert("ça marche")</script>';
-        }else{
-            echo '<script>alert("ça marche pas")</script>';
-        }
-
-    }
 }
