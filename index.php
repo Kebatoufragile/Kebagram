@@ -23,7 +23,21 @@ $app->get('/', function($request, $response, $args){
 
     return $this->view->render($response, 'login.twig', array());
 
-})->setName('acceuil');
+})->setName('accueil');
 
+$app->post('/login', function($request, $response, $args){
+
+
+    $controler = new LoginController($app);
+    $controler->authenticateUser();
+
+})->setName('login');
+
+$app->post('/register', function($request, $response, $args){
+
+  $controler = new InscriptionController($app);
+  $controler->inscription();
+
+})->setName('register');
 
 $app->run();
