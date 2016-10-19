@@ -1,7 +1,9 @@
 <?php
-define("PATH_ROOT", __DIR__ . '/');
 
-require PATH_ROOT . '../app/server.php';
+$app = new \Slim\Slim();
 
-$usercontroller = new App\Controllers\UserController(null);
-$usercontroller->authenticateUser("oui", "non");
+
+$app->get('/', function() use ($app){
+  $control = new UserController($app);
+  $control->renderHomepage();
+})->name("home page");
