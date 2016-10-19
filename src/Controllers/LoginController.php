@@ -24,7 +24,7 @@ final class LoginController{
         $this->logger->info("Log In Page");
 
         $this->authenticateUser();
-        
+
         return $this->view->render($response, 'login.twig');
     }
 
