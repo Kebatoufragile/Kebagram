@@ -3,8 +3,16 @@
 {% block body %}
 
     <form action="login/" method="post">
-        <input name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
-        <input name="password" type="password" autocomplete="off" placeholder="Password" required/>
+        <div class="form-group">
+            <label for="usernameLogin">Username or Email address</label>
+            <input class="form-control" id="usernameLogin" name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordLogin">Password</label>
+            <input class="form-control" id="passwordLogin" name="password" type="password" autocomplete="off" placeholder="Password" required/>
+        </div>
+
         <button class="btn btn-default" type="submit">Log In</button>
     </form>
 
