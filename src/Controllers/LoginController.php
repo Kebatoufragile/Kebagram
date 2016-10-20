@@ -2,6 +2,7 @@
 
 namespace controller;
 
+use App\Models\User;
 use Cartalyst\Sentinel\Users\UserInterface;
 use controller\AbstractController;
 use Psr\Log\LoggerInterface;
@@ -11,22 +12,22 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 final class LoginController extends AbstractController{
 
+    private $view;
+    private $user;
+    private $sentinel;
 
-    public function __construct($view, LoggerInterface $logger, $user)
+    public function __construct($view, $user)
     {
         $this->view = $view;
-        $this->logger = $logger;
         $this->model = $user;
         $this->sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args)
     {
-        $this->logger->info("Log In Page");
-
         $this->authenticateUser();
 
-        return $this->view->render($response, 'login.twig');
+        return $this->view->render($response, 'homepage.html.twig');
     }
 
     /**

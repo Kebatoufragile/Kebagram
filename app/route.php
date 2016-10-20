@@ -8,4 +8,4 @@ $app->get('/', 'App\Controllers\HomeController:dispatch')->setName('homepage');
 
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 
-$app->get('/login', 'App\Controllers\UserController:dispatch')->setName('login');
+$app->get('/login/', 'controller\LoginController:dispatch')->setName('login');

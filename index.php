@@ -25,18 +25,17 @@ $app->get('/', function($request, $response, $args){
 
 })->setName('accueil');
 
-$app->post('/login', function($request, $response, $args){
+$app->post('/login/', function($request, $response, $args){
 
-
-    $controler = new LoginController($app);
-    $controler->authenticateUser();
+    $controller = new controller\LoginController($this->view, $_SESSION['user']);
+    return $controller->dispatch($request, $response, $args);
 
 })->setName('login');
 
 $app->post('/register', function($request, $response, $args){
 
-  $controler = new InscriptionController($app);
-  $controler->inscription();
+  $controller = new InscriptionController($app);
+  $controller->inscription();
 
 })->setName('register');
 
