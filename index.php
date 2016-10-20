@@ -21,7 +21,7 @@ $container['view'] = function($container){
 
 $app->get('/', function($request, $response, $args){
 
-    return $this->view->render($response, 'login.html.twig', array());
+    return $this->view->render($response, 'homepage.html.twig', array());
 
 })->setName('accueil');
 
