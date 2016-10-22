@@ -4,8 +4,17 @@
 	controller needs to be registered in dependency.php
 */
 
-$app->get('/', 'App\Controllers\HomeController:dispatch')->setName('homepage');
+$app->get('/', function($request, $response, $args){
 
-$app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
+    return $this->view->render($response, 'homepage.html.twig', array());
 
-$app->get('/login', 'controller\LoginController:dispatch')->setName('login');
+})->setName('accueil');
+
+$app->post('/login', 'App\Controllers\LoginController:dispatch')->setName('login');
+
+$app->post('/register', function($request, $response, $args){
+
+    $controller = new InscriptionController($app);
+    $controller->inscription();
+
+})->setName('register');
