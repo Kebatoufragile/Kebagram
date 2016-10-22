@@ -1,14 +1,17 @@
 <?php
 
-namespace controller;
+namespace App\Controllers;
+
+use Psr\Log\LoggerInterface;
 
 abstract class AbstractController{
 
-  public $requete;
+    protected $view;
+    protected $logger;
 
-  function __construct($r){
-    $this->requete=$r;
-  }
+    function __construct($view){
+        $this->view = $view;
+    }
 }
 
- ?>
+?>

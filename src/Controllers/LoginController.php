@@ -1,35 +1,29 @@
 <?php
 
-namespace controller;
+namespace App\Controllers;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Log\LoggerInterface;
 
+final class LoginController extends AbstractController{
 
-final class LoginController{
-
-    private $view;
-    private $user;
-    private $logger;
+    protected $view;
+    protected $logger;
     private $sentinel;
 
-    public function __construct($view, LoggerInterface $logger, $user)
+    public function __construct($view)
     {
-        $this->view = $view;
-        $this->logger = $logger;
-        $this->model = $user;
-        //$this->sentinel = (new Sentinel())->getSentinel();
+        parent::__construct($view);
+
+        //$this->sentinel = Sentinel::getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args)
     {
         //$this->authenticateUser();
-        echo '<script>alert("ça marche")</script>';
-
-        $this->view->render($response, 'homepage.html.twig');
+        $this->view['view']->render($response, 'homepage.html.twig');
 
         return $response;
     }
@@ -49,7 +43,7 @@ final class LoginController{
                 'password' => $_POST['password']
             ];
 
-            $userInterface = $this->sentinel->authenticate($credentials);
+            $userInterface = $sentinel->authenticate($credentials);
 
             if($userInterface instanceof UserInterface){
                 echo '<script>alert("ça marche")</script>';
