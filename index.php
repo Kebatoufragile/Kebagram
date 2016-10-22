@@ -3,21 +3,29 @@
 
 require_once 'vendor/autoload.php';
 
+$configuration = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
 
-$app = new \Slim\App();
+$c = new \Slim\Container($configuration);
+
+$app = new \Slim\App($c);
 
 $container = $app->getContainer();
 
 $container['view'] = function($container){
-  $view = new \Slim\Views\Twig('src/Templates', [
-    'cache' => 'storage/cache'
-  ]);
+    $view = new \Slim\Views\Twig('src/Templates', [
+        'cache' => 'storage/cache'
+    ]);
 
-  $basePath = rtrim(str_ireplace("index.php", '', $container['request']->getUri()->getBasePath()), '/');
-  $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+    $basePath = rtrim(str_ireplace("index.php", '', $container['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
-  return $view;
+    return $view;
 };
+
 
 $app->get('/', function($request, $response, $args){
 
@@ -25,17 +33,12 @@ $app->get('/', function($request, $response, $args){
 
 })->setName('accueil');
 
-$app->post('/login/', function($request, $response, $args){
-
-    $controller = new controller\LoginController($this->view, $_SESSION['user']);
-    return $controller->dispatch($request, $response, $args);
-
-})->setName('login');
+$app->post('/login', 'controller\LoginController:dispatch')->setName('login');
 
 $app->post('/register', function($request, $response, $args){
 
-  $controller = new InscriptionController($app);
-  $controller->inscription();
+    $controller = new InscriptionController($app);
+    $controller->inscription();
 
 })->setName('register');
 

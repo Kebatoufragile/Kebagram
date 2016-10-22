@@ -2,32 +2,36 @@
 
 namespace controller;
 
-use App\Models\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
-use controller\AbstractController;
-use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Log\LoggerInterface;
 
 
-final class LoginController extends AbstractController{
+final class LoginController{
 
     private $view;
     private $user;
+    private $logger;
     private $sentinel;
 
-    public function __construct($view, $user)
+    public function __construct($view, LoggerInterface $logger, $user)
     {
         $this->view = $view;
+        $this->logger = $logger;
         $this->model = $user;
-        $this->sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
+        //$this->sentinel = (new Sentinel())->getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args)
     {
-        $this->authenticateUser();
+        //$this->authenticateUser();
+        echo '<script>alert("ça marche")</script>';
 
-        return $this->view->render($response, 'homepage.html.twig');
+        $this->view->render($response, 'homepage.html.twig');
+
+        return $response;
     }
 
     /**
@@ -37,7 +41,7 @@ final class LoginController extends AbstractController{
      * @param $password
      *
      */
-    public function authenticateUser(){
+    private function authenticateUser(){
         if(isset($_POST['username']) && isset($_POST['password'])){
 
             $credentials = [
