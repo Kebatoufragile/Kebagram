@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,27 +13,25 @@ final class LoginController extends AbstractController{
     protected $logger;
     private $sentinel;
 
-    public function __construct($view)
-    {
+    public function __construct($view){
+
         parent::__construct($view);
 
-        //$this->sentinel = Sentinel::getSentinel();
+        $this->sentinel = new Sentinel();
     }
 
-    public function dispatch(Request $request, Response $response, $args)
-    {
-        //$this->authenticateUser();
+    public function dispatch(Request $request, Response $response, $args){
+
+        $this->authenticateUser();
+
         $this->view['view']->render($response, 'homepage.html.twig');
 
         return $response;
+
     }
 
     /**
      * Authenticate the user if the credentials are correct
-     *
-     * @param $username username or mail address
-     * @param $password
-     *
      */
     private function authenticateUser(){
         if(isset($_POST['username']) && isset($_POST['password'])){
@@ -43,10 +41,11 @@ final class LoginController extends AbstractController{
                 'password' => $_POST['password']
             ];
 
-            $userInterface = $sentinel->authenticate($credentials);
+            $userInterface = $this->sentinel->getSentinel()->authenticate($credentials);
 
             if($userInterface instanceof UserInterface){
                 echo '<script>alert("ça marche")</script>';
+                $this->sentinel->getSentinel()->login($userInterface);
             }else{
                 echo '<script>alert("ça marche pas")</script>';
             }
