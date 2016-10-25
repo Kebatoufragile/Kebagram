@@ -3,6 +3,14 @@
 
 require_once 'vendor/autoload.php';
 
+use Illuminate\Database\Capsule\Manager as DB;
+
+$data = new DB();
+$data->addConnection(parse_ini_file('conf/db_config.ini'));
+$data->setAsGlobal();
+$data->bootEloquent();
+
+
 $configuration = [
     'settings' => [
         'displayErrorDetails' => true,
