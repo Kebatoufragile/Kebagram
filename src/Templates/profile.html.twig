@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Kebagram/">{# <img alt="Kebagram" src="public/assets/img/logo.png"> #}Kebagram</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/Kebagram/">Home</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Notification 1</a></li>
+                            <li><a href="#">Notification 2</a></li>
+                            <li><a href="#">Notification 3</a></li>
+                            <li><a href="#">Notification 4</a></li>
+                            <li><a href="#">Notification 5</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="active"><a href="/Kebagram/index.php/profile">Profile Page</a></li>
+
+                </ul>
+
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Search using #tags or @usernames..."/>
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="panel panel-warning panel-profile">
+        <div class="panel-heading"><h1 class="panel-title">Your Personal Informations</h1></div>
+        <div class="panel-body">
+
+            {# image #}
+            <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/lecorse.png" alt="Image profile">
+
+            <br><br>
+        </div>
+
+        <ul class="list-group">
+
+            <li class="list-group-item text-center">
+                {# infos #}
+                <form action="/Kebagram/index.php/profile/modify" method="post">
+
+                    <div class="form-group">
+                        <label for="emailProfile">Email address</label>
+                        <input class="form-control" id="emailProfile" name="emailProfile" type="email" autocomplete="off" value="{ { app.user.email } }" autofocus required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstnameProfile">First Name</label>
+                        <input class="form-control" id="firstnameProfile" name="firstnameProfile" type="text" autocomplete="off" value="{ { app.user.firstname } }" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameProfile">Name</label>
+                        <input class="form-control" id="nameProfile" name="nameProfile" type="text" autocomplete="off" value="{ { app.user.name } }" required/>
+                    </div>
+
+                    <button class="btn btn-warning" type="submit">Modify</button>
+
+                </form>
+
+                <br>
+            </li>
+
+            <li class="list-group-item text-center">
+                <br>
+                {# mdp #}
+                <form action="/Kebagram/index.php/profile/modifypassword" method="post">
+
+                    <div class="form-group">
+                        <label for="actualPassword">Actual Password</label>
+                        <input class="form-control" id="actualPassword" name="actualPassword" type="password" autocomplete="off" placeholder="Actual password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input class="form-control" id="newPassword" name="newPassword" type="password" autocomplete="off" placeholder="New password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPasswordConf">Confirmation</label>
+                        <input class="form-control" id="newPasswordConf" name="newPasswordConf" type="password" autocomplete="off" placeholder="New password confirmation" required/>
+                    </div>
+
+                    <button class="btn btn-warning" type="submit">Modify password</button>
+
+                </form>
+            </li>
+
+        </ul>
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

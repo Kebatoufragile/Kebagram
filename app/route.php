@@ -12,6 +12,8 @@ $app->get('/', function($request, $response, $args){
 
 $app->post('/login', 'App\Controllers\LoginController:dispatch')->setName('login');
 
+$app->get('/profile', 'App\Controllers\ProfileController:dispatch')->setName('profile');
+
 $app->post('/register', function($request, $response, $args){
 
     $controller = new InscriptionController($app);

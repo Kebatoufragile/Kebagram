@@ -5,3 +5,12 @@
     width:20%;
     float:left;
 }
+
+body{
+    padding-top:70px;
+}
+
+.panel-profile{
+    margin-left:20%;
+    margin-right:20%;
+}
