@@ -18,6 +18,7 @@ final class LoginController extends AbstractController{
         parent::__construct($view);
 
         $this->sentinel = new Sentinel();
+        $this->sentinel = $this->sentinel->getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args){
@@ -37,15 +38,15 @@ final class LoginController extends AbstractController{
         if(isset($_POST['username']) && isset($_POST['password'])){
 
             $credentials = [
-                'username' => $_POST['username'],
+                'email' => $_POST['username'],
                 'password' => $_POST['password']
             ];
 
-            $userInterface = $this->sentinel->getSentinel()->authenticate($credentials);
+            $userInterface = $this->sentinel->authenticate($credentials);
 
             if($userInterface instanceof UserInterface){
                 echo '<script>alert("ça marche")</script>';
-                $this->sentinel->getSentinel()->login($userInterface);
+                $this->sentinel->login($userInterface, true);
             }else{
                 echo '<script>alert("ça marche pas")</script>';
             }
