@@ -49,62 +49,75 @@
 
 {% block content %}
 
-    <div class="panel panel-danger panel-profile">
+    <div class="panel panel-warning panel-profile">
         <div class="panel-heading"><h1 class="panel-title">Your Personal Informations</h1></div>
-        <div class="panel-body text-center">
+        <div class="panel-body">
 
             {# image #}
             <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/lecorse.png" alt="Image profile">
 
             <br><br>
-
-            {# infos #}
-            <form action="/Kebagram/index.php/profile/modify" method="post">
-
-                <div class="form-group">
-                    <label for="emailProfile">Email address</label>
-                    <input class="form-control" id="emailProfile" name="emailProfile" type="email" autocomplete="off" value="{ { app.user.email } }" autofocus required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="firstnameProfile">First Name</label>
-                    <input class="form-control" id="firstnameProfile" name="firstnameProfile" type="text" autocomplete="off" value="{ { app.user.firstname } }" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="nameProfile">Username or Email address</label>
-                    <input class="form-control" id="nameProfile" name="nameProfile" type="text" autocomplete="off" value="{ { app.user.name } }" required/>
-                </div>
-
-                <button class="btn btn-default" type="submit">Modify</button>
-
-            </form>
-
-            <br><br>
-
-            {# mdp #}
-            <form action="/Kebagram/index.php/profile/modifypassword" method="post">
-
-                <div class="form-group">
-                    <label for="actualPassword">Actual Password</label>
-                    <input class="form-control" id="actualPassword" name="actualPassword" type="password" autocomplete="off" placeholder="Actual password" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="newPassword">New Password</label>
-                    <input class="form-control" id="newPassword" name="newPassword" type="password" autocomplete="off" placeholder="New password" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="newPasswordConf">Confirmation</label>
-                    <input class="form-control" id="newPasswordConf" name="newPasswordConf" type="password" autocomplete="off" placeholder="New password confirmation" required/>
-                </div>
-
-                <button class="btn btn-default" type="submit">Modify password</button>
-
-            </form>
-
         </div>
+
+        <ul class="list-group">
+
+            <li class="list-group-item text-center">
+                {# infos #}
+                <form action="/Kebagram/index.php/profile/modify" method="post">
+
+                    <div class="form-group">
+                        <label for="emailProfile">Email address</label>
+                        <input class="form-control" id="emailProfile" name="emailProfile" type="email" autocomplete="off" value="{ { app.user.email } }" autofocus required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstnameProfile">First Name</label>
+                        <input class="form-control" id="firstnameProfile" name="firstnameProfile" type="text" autocomplete="off" value="{ { app.user.firstname } }" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameProfile">Name</label>
+                        <input class="form-control" id="nameProfile" name="nameProfile" type="text" autocomplete="off" value="{ { app.user.name } }" required/>
+                    </div>
+
+                    <button class="btn btn-warning" type="submit">Modify</button>
+
+                </form>
+
+                <br>
+            </li>
+
+            <li class="list-group-item text-center">
+                <br>
+                {# mdp #}
+                <form action="/Kebagram/index.php/profile/modifypassword" method="post">
+
+                    <div class="form-group">
+                        <label for="actualPassword">Actual Password</label>
+                        <input class="form-control" id="actualPassword" name="actualPassword" type="password" autocomplete="off" placeholder="Actual password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input class="form-control" id="newPassword" name="newPassword" type="password" autocomplete="off" placeholder="New password" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPasswordConf">Confirmation</label>
+                        <input class="form-control" id="newPasswordConf" name="newPasswordConf" type="password" autocomplete="off" placeholder="New password confirmation" required/>
+                    </div>
+
+                    <button class="btn btn-warning" type="submit">Modify password</button>
+
+                </form>
+            </li>
+
+        </ul>
+
+
+
+
+
     </div>
 
 
