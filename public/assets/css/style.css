@@ -1,9 +1,27 @@
 .container{
+    display:inline-block
+}
+
+.container-suggestions{
     background-color:dimgray;
     border:1px solid darkslategray;
     color:white;
-    width:20%;
-    float:left;
+    width:15%;
+}
+
+.container-listkebabs{
+    width:60%;
+    border:2px gray solid;
+    border-radius: 10px;
+    margin-left:50px;
+}
+
+.container-boutons{
+    width:15%;
+}
+
+a{
+    color:white;
 }
 
 body{

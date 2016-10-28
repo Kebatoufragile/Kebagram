@@ -14,6 +14,8 @@ $app->post('/login', 'App\Controllers\LoginController:dispatch')->setName('login
 
 $app->get('/profile', 'App\Controllers\ProfileController:dispatch')->setName('profile');
 
+$app->get('/addpic', 'App\Controllers\PictureController:dispatch')->setName('addpic');
+
 $app->post('/register', function($request, $response, $args){
 
     $controller = new InscriptionController($app);

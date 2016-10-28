@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-warning panel-profile">
+        <div class="panel-heading"><h1 class="panel-title">Add Picture</h1></div>
+
+        <div class="panel-body text-center">
+            <form action="/Kebagram/index.php/addpic/" method="post">
+
+                <div class="form-group center-block">
+                    <label for="picture">Picture to upload</label>
+                    <input id="picture" name="picture" type="file" placeholder="Choose a picture to upload" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Choose multiple tags</label>
+                    <input id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse'" required>
+                </div>
+
+                <button class="btn btn-default" type="submit">Add picture</button>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
