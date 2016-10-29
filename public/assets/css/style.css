@@ -9,6 +9,10 @@
     width:15%;
 }
 
+.container-suggestions > p > a{
+    color:white;
+}
+
 .container-listkebabs{
     width:60%;
     border:2px gray solid;
@@ -18,10 +22,6 @@
 
 .container-boutons{
     width:15%;
-}
-
-a{
-    color:white;
 }
 
 body{
