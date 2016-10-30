@@ -1,20 +1,64 @@
 <?php
 
-namespace controller;
+namespace App\Controllers;
 
-require '../vendor/autoload.php';
+//require '../vendor/autoload.php';
 
-use Cartalyst\Sentinel\Sentinel;
-use Illuminate\Database\Capsule\Manager as DB;
-use App\Models\User;
+use Cartalyst\Sentinel\Native\Facades\Sentinel;
+use Cartalyst\Sentinel\Users\UserInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 
-class InscriptionController extends AbstractController
+final class InscriptionController extends AbstractController
 {
 
-    public function inscription(){
+  protected $view;
+  protected $logger;
+  private $sentinel;
 
-        if(isset($_POST['inscription'])){
+    public function __construct($view){
+
+      parent::__construct($view);
+      $this->sentinel = new Sentinel();
+      $this->sentinel = $this->sentinel->getSentinel();
+
+    }
+
+    public function dispatch(Request $request, Response $response, $args){
+
+      $this->register();
+
+      $this->view['view']->render($response, 'register.html.twig');
+
+      return $response;
+
+    }
+
+    public function register(){
+
+        if (isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
+
+          $credentials = [
+              //'username' => $_POST['username'],
+              'password' => $_POST['mdp'],
+              'last_name' => $_POST['nom'],
+              'first_name' => $_POST['prenom'],
+              'email' => $_POST['email']
+              //date de naissance ?
+          ];
+
+          $logRegister = $this->sentinel->registerAndActivate($credentials);
+
+          echo '<script>alert("Inscription reussie, vous pouvez désormais vous connecter")';
+
+        } else {
+
+          echo '<script>alert("il manque des données chef")</script>';
+
+        }
+
+        /*if(isset($_POST['inscription'])){
 
             $data = new DB();
             $data->addConnection(parse_ini_file('../../db_config.ini'));
@@ -35,7 +79,7 @@ class InscriptionController extends AbstractController
             Sentinel::register($credentials);
 
 
-        }
+        }*/
 
     }
 
