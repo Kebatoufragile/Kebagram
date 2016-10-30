@@ -16,9 +16,4 @@ $app->get('/profile', 'App\Controllers\ProfileController:dispatch')->setName('pr
 
 $app->get('/addpic', 'App\Controllers\PictureController:dispatch')->setName('addpic');
 
-$app->post('/register', function($request, $response, $args){
-
-    $controller = new InscriptionController($app);
-    $controller->inscription();
-
-})->setName('register');
+$app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
