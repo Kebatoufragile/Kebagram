@@ -38,7 +38,7 @@ final class InscriptionController extends AbstractController
     public function register(){
 
         if (isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
-
+          echo "fraise";
           $credentials = [
               //'username' => $_POST['username'],
               'password' => $_POST['mdp'],
@@ -52,9 +52,7 @@ final class InscriptionController extends AbstractController
 
           echo '<script>alert("Inscription reussie, vous pouvez désormais vous connecter")';
 
-        } else {
-
-          echo '<script>alert("il manque des données chef")</script>';
+          header ('Location: http://localhost/Kebagram/');
 
         }
 
