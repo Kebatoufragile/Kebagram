@@ -3,10 +3,10 @@
 {% block content %}
 
   {# inscription #}
-  
+
   <div class="container container-listkebabs text-center">
     <div class="inscription">
-      <form action="/register/" method="post">
+      <form action="/Kebagram/index.php/signup/submit" method="post">
 
           <div class="form-group">
             <label for="usernameRegister">Username</label>
@@ -30,7 +30,7 @@
 
           <div class="form-group">
             <label for="emailRegister">email</label>
-            <input name="email" type="text" autocomplete="off" placeholder="email" required/>
+            <input name="email" type="email" autocomplete="off" placeholder="email" required/>
           </div>
 
           <button class="btn btn-default" type="submit">Inscription</button>

@@ -17,3 +17,5 @@ $app->get('/profile', 'App\Controllers\ProfileController:dispatch')->setName('pr
 $app->get('/addpic', 'App\Controllers\PictureController:dispatch')->setName('addpic');
 
 $app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
+
+$app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
