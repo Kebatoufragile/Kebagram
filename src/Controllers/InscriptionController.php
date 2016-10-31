@@ -27,7 +27,7 @@ final class InscriptionController extends AbstractController
 
     public function dispatch(Request $request, Response $response, $args){
 
-      $this->register();
+      //$this->register();
 
       $this->view['view']->render($response, 'register.html.twig');
 
@@ -38,7 +38,6 @@ final class InscriptionController extends AbstractController
     public function register(){
 
         if (isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
-          echo "fraise";
           $credentials = [
               //'username' => $_POST['username'],
               'password' => $_POST['mdp'],
@@ -48,36 +47,21 @@ final class InscriptionController extends AbstractController
               //date de naissance ?
           ];
 
-          $logRegister = $this->sentinel->registerAndActivate($credentials);
+          $this->sentinel->registerAndActivate($credentials);
 
-          echo '<script>alert("Inscription reussie, vous pouvez désormais vous connecter")';
-
-          header ('Location: http://localhost/Kebagram/');
-
+        } else {
+          echo '<script>alert("il manque des données chef")';
         }
 
-        /*if(isset($_POST['inscription'])){
+    }
 
-            $data = new DB();
-            $data->addConnection(parse_ini_file('../../db_config.ini'));
-            $data->setAsGlobal();
-            $data->bootEloquent();
+    public function dispatchSubmit(Request $request, Response $response, $args){
 
+      $this->register();
 
+      $this->view['view']->render($response, 'submit.html.twig');
 
-            $credentials = [
-                'username' => $_POST['pseudo'],
-                'password' => $_POST['mdp'],
-                'name' => $_POST['nom'],
-                'firstname' => $_POST['prenom'],
-                'email' => $_POST['email'],
-                'birthdate' => $_POST['datenaiss'],
-                'creation_date' => getdate(),
-            ];
-            Sentinel::register($credentials);
-
-
-        }*/
+      return $response;
 
     }
 
