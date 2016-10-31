@@ -4,7 +4,7 @@ namespace App\Controllers;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-define('TARGET', "/public/assets/img/$_SESSION['user']->username"); //Répertoire cible -> créer un répertoire au nom de l'utilisateur -> a récupérer dans la variabloe de session $_SESSION["username"]
+define('TARGET', "public/assets/img/$_SESSION[user]->username"); //Répertoire cible -> créer un répertoire au nom de l'utilisateur -> a récupérer dans la variabloe de session $_SESSION["username"]
 define('MAX_SIZE', 2000000); //Taille max en octets du fichier
 define('WIDTH_MAX', 1200);   //Largeur max de l'image en pixels
 define('HEIGHT_MAX', 900);  //Hauteur max de l'image en pixels
@@ -37,7 +37,7 @@ final class PictureController extends AbstractController{
        * Creation du repertoire cible si inexistant
        ***********************************************************************/
       if(!is_dir(TARGET)){
-          if(!mkdir(TARGET, 0755)) {
+          if(!mkdir(TARGET, 777)) {
               exit('Erreur : le repertoire cible ne peut-être créé ! Vérifiez que vous disposez des droits suffisants pour le faire ou créez le manuellement !');
           }
       }
