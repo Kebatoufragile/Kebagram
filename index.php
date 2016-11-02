@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require_once 'vendor/autoload.php';
 
@@ -9,8 +10,6 @@ $data = new DB();
 $data->addConnection(parse_ini_file('conf/db_config.ini'));
 $data->setAsGlobal();
 $data->bootEloquent();
-
-session_start();
 
 $configuration = [
     'settings' => [
@@ -39,8 +38,13 @@ $container['view'] = function($container){
     return $view;
 };
 
+if(!is_null($_SESSION['userid']) && isset($_SESSION['userid']))
+    $_SESSION['user'] = \App\Models\User::where("id", "like", $_SESSION['userid'])->first();
+
 $container['session'] = function($container){
     return $_SESSION;
 };
 
 $app->run();
+
+
