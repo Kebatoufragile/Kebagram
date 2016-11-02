@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use Cartalyst\Sentinel\Sentinel;
-use Cartalyst\Sentinel\Users\UserInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,12 +13,15 @@ final class UserController
     private $user;
     private $sentinel;
 
+<<<<<<< HEAD
+    public function __construct($view)
+=======
     public function __construct($view, LoggerInterface $logger, $user)
+>>>>>>> 54bd759a171104de296a52ffcd890a1fecbcb759
     {
         $this->view = $view;
         $this->logger = $logger;
         $this->model = $user;
-        $this->sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
     }
 
     public function dispatch(Request $request, Response $response, $args)

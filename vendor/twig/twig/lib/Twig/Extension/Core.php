@@ -1546,3 +1546,9 @@ function twig_array_batch($items, $size, $fill = null)
 
     return $result;
 }
+
+function getGlobals() {
+    return array(
+        'session'   => $_SESSION,
+    ) ;
+}

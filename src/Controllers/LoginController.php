@@ -2,43 +2,42 @@
 
 namespace App\Controllers;
 
-use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
+use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-final class LoginController extends AbstractController{
 
-    protected $view;
-    protected $logger;
-    private $sentinel;
+final class LoginController{
 
-    public function __construct($view){
 
-        parent::__construct($view);
-
-        $this->sentinel = new Sentinel();
-        $this->sentinel = $this->sentinel->getSentinel();
+    public function __construct($view, LoggerInterface $logger, $user)
+    {
+        $this->view = $view;
+        $this->logger = $logger;
+        $this->model = $user;
+        $this->sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
     }
 
-    public function dispatch(Request $request, Response $response, $args){
+    public function dispatch(Request $request, Response $response, $args)
+    {
+        $this->logger->info("Log In Page");
 
-        $this->authenticateUser();
-
-        $this->view['view']->render($response, 'homepage.html.twig');
-
-        return $response;
-
+        return $this->view->render($response, 'login.twig');
     }
 
     /**
      * Authenticate the user if the credentials are correct
+     *
+     * @param $username username or mail address
+     * @param $password
+     *
      */
-    private function authenticateUser(){
+    public function authenticateUser(){
         if(isset($_POST['username']) && isset($_POST['password'])){
 
             $credentials = [
-                'email' => $_POST['username'],
+                'username' => $_POST['username'],
                 'password' => $_POST['password']
             ];
 
@@ -46,7 +45,6 @@ final class LoginController extends AbstractController{
 
             if($userInterface instanceof UserInterface){
                 echo '<script>alert("ça marche")</script>';
-                $this->sentinel->login($userInterface, true);
             }else{
                 echo '<script>alert("ça marche pas")</script>';
             }
