@@ -6,7 +6,9 @@
 
 $app->get('/', function($request, $response, $args){
 
-    return $this->view->render($response, 'homepage.html.twig', array());
+    return $this->view->render($response, 'homepage.html.twig', array(
+        'user' => $this['session']->get('user'),
+    ));
 
 })->setName('accueil');
 
@@ -19,7 +21,7 @@ $app->get('/addpic', 'App\Controllers\PictureController:dispatch')->setName('add
 $app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
 
 $app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
-=======
+
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 
 $app->get('/login', 'App\Controllers\LoginController:authenticateUser')->setName('login');

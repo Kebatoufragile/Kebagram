@@ -43,7 +43,12 @@
                         </ul>
                     </li>
 
-                    <li><a href="/Kebagram/index.php/profile">Profile Page</a></li>
+                    {% if user %}
+                        <li><a href="/Kebagram/index.php/profile">{{ user.email }}</a></li>
+                    {% else %}
+
+                        <li><a href="/Kebagram/index.php/signup">Sign up</a></li>
+                    {% endif %}
 
                 </ul>
 

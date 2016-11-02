@@ -17,20 +17,26 @@
 
     {# liste kebabs OU login #}
     <div class="container container-listkebabs text-center">
-        <form action="/Kebagram/index.php/login" method="post">
-            <div class="form-group">
-                <label for="usernameLogin">Username or Email address</label>
-                <input class="form-control" id="usernameLogin" name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
-            </div>
 
-            <div class="form-group">
-                <label for="passwordLogin">Password</label>
-                <input class="form-control" id="passwordLogin" name="password" type="password" autocomplete="off" placeholder="Password" required/>
-            </div>
+        {% if user %}
+            Liste kebabs
+        {% else %}
+            <form action="/Kebagram/index.php/login" method="post">
+                <div class="form-group">
+                    <label for="usernameLogin">Username or Email address</label>
+                    <input class="form-control" id="usernameLogin" name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
+                </div>
 
-            <button class="btn btn-default" type="submit">Log In</button><br>
-            <a href="/Kebagram/index.php/signup">Don't you have an accout ? Sign up</a>
-        </form>
+                <div class="form-group">
+                    <label for="passwordLogin">Password</label>
+                    <input class="form-control" id="passwordLogin" name="password" type="password" autocomplete="off" placeholder="Password" required/>
+                </div>
+
+                <button class="btn btn-default" type="submit">Log In</button><br>
+                <a href="/Kebagram/index.php/signup">Don't you have an accout ? Sign up</a>
+            </form>
+        {% endif %}
+
     </div>
 
     {# boutons #}
