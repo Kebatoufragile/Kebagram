@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model{
 
-  protected $table = "Tag";
+  protected $table = "tag";
   protected $primaryKey = "uId";
 
 }

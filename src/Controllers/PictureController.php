@@ -36,10 +36,12 @@ final class PictureController extends AbstractController{
       $extension = '';
       $message = '';
       $nomImage = '';
-      $bdd = new BD();
-      $bdd->addConnection(parse_ini_file('../../db_config.ini'));
-      $bdd->setAsGlobal();
-      $bdd->bootEloquent();
+      /*
+      *$bdd = new BD();
+      *$bdd->addConnection(parse_ini_file('../../db_config.ini'));
+      *$bdd->setAsGlobal();
+      *$bdd->bootEloquent();
+      */
 
       $pic = new Pictures();
 
