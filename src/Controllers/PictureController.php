@@ -3,6 +3,8 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\Pictures;
+use Illuminate\Database\Capsule\Manager as BD;
 
 define('TARGET', "public/assets/img/$_SESSION[user]->username"); //Répertoire cible -> créer un répertoire au nom de l'utilisateur -> a récupérer dans la variabloe de session $_SESSION["username"]
 define('MAX_SIZE', 2000000); //Taille max en octets du fichier
@@ -32,6 +34,12 @@ final class PictureController extends AbstractController{
       $extension = '';
       $message = '';
       $nomImage = '';
+      $bdd = new BD();
+      $bdd->addConnection(parse_ini_file('../../conf/db_config.ini'));
+      $bdd->setAsGlobal();
+      $bdd->bootEloquent();
+
+      $pic = new Pictures();
 
       /*************************************************************************
        * Creation du repertoire cible si inexistant
@@ -68,6 +76,15 @@ final class PictureController extends AbstractController{
                               //Si c'est OK, on test l'upload
                               if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage)){
                                   $message = 'Upload réussi !';
+                                  //insert database
+                                  //test data
+                                  $pic->Name = $_FILES['fichier']['name'];
+                                  $pic->Link = TARGET.'/'.$nomImage;
+                                  $pic->uId = 6;
+                                  $pic->Desc = "Image de test";
+                                  $pic->Date = date("m.d.y");
+                                  $pic->AuthorKey = 1;
+                                  $pic->save();
                               }else{
                                   //Sinon on affiche une erreur système
                                   $message = 'Problème lors de l\'upload !';
