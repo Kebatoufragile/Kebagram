@@ -31,7 +31,10 @@
                         </ul>
                     </li>
 
-                    <li class="active"><a href="/Kebagram/index.php/profile">{{ user.email }}</a></li>
+                    {% if user.email != false %}
+                        <li class="active"><a href="/Kebagram/index.php/profile">{{ user.email }}</a></li>
+                        <li><a href="/Kebagram/index.php/logout"><b>Log out</b></a></li>
+                    {% endif %}
 
                 </ul>
 
@@ -48,79 +51,79 @@
 {% endblock %}
 
 
-{% block content %}
+        {% block content %}
 
-    {% if user %}
-        <div class="panel panel-warning panel-profile">
-            <div class="panel-heading"><h1 class="panel-title">Your Personal Informations</h1></div>
-            <div class="panel-body">
+            {% if user %}
+                <div class="panel panel-warning panel-profile">
+                    <div class="panel-heading"><h1 class="panel-title">Your Personal Informations</h1></div>
+                    <div class="panel-body">
 
-                {# image #}
-                <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/lecorse.png" alt="Image profile">
+                        {# image #}
+                        <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/lecorse.png" alt="Image profile">
 
-                <br><br>
-            </div>
+                        <br><br>
+                    </div>
 
-            <ul class="list-group">
+                    <ul class="list-group">
 
-                <li class="list-group-item text-center">
-                    {# infos #}
-                    <form action="/Kebagram/index.php/profile/modify" method="post">
+                        <li class="list-group-item text-center">
+                            {# infos #}
+                            <form action="/Kebagram/index.php/profile/modify" method="post">
 
-                        <div class="form-group">
-                            <label for="emailProfile">Email address</label>
-                            <input class="form-control" id="emailProfile" name="emailProfile" type="email" autocomplete="off" value="{{ user.email }}" autofocus required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="emailProfile">Email address</label>
+                                    <input class="form-control" id="emailProfile" name="emailProfile" type="email" autocomplete="off" value="{{ user.email }}" autofocus required/>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="firstnameProfile">First Name</label>
-                            <input class="form-control" id="firstnameProfile" name="firstnameProfile" type="text" autocomplete="off" value="{{ user.first_name }}" required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="firstnameProfile">First Name</label>
+                                    <input class="form-control" id="firstnameProfile" name="firstnameProfile" type="text" autocomplete="off" value="{{ user.first_name }}" required/>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="nameProfile">Last Name</label>
-                            <input class="form-control" id="nameProfile" name="nameProfile" type="text" autocomplete="off" value="{{ user.last_name }}" required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="nameProfile">Last Name</label>
+                                    <input class="form-control" id="nameProfile" name="nameProfile" type="text" autocomplete="off" value="{{ user.last_name }}" required/>
+                                </div>
 
-                        <button class="btn btn-warning" type="submit">Modify</button>
+                                <button class="btn btn-warning" type="submit">Modify</button>
 
-                    </form>
+                            </form>
 
-                    <br>
-                </li>
+                            <br>
+                        </li>
 
-                <li class="list-group-item text-center">
-                    <br>
-                    {# mdp #}
-                    <form action="/Kebagram/index.php/profile/modifypassword" method="post">
+                        <li class="list-group-item text-center">
+                            <br>
+                            {# mdp #}
+                            <form action="/Kebagram/index.php/profile/modifypassword" method="post">
 
-                        <div class="form-group">
-                            <label for="actualPassword">Actual Password</label>
-                            <input class="form-control" id="actualPassword" name="actualPassword" type="password" autocomplete="off" placeholder="Actual password" required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="actualPassword">Actual Password</label>
+                                    <input class="form-control" id="actualPassword" name="actualPassword" type="password" autocomplete="off" placeholder="Actual password" required/>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="newPassword">New Password</label>
-                            <input class="form-control" id="newPassword" name="newPassword" type="password" autocomplete="off" placeholder="New password" required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input class="form-control" id="newPassword" name="newPassword" type="password" autocomplete="off" placeholder="New password" required/>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="newPasswordConf">Confirmation</label>
-                            <input class="form-control" id="newPasswordConf" name="newPasswordConf" type="password" autocomplete="off" placeholder="New password confirmation" required/>
-                        </div>
+                                <div class="form-group">
+                                    <label for="newPasswordConf">Confirmation</label>
+                                    <input class="form-control" id="newPasswordConf" name="newPasswordConf" type="password" autocomplete="off" placeholder="New password confirmation" required/>
+                                </div>
 
-                        <button class="btn btn-warning" type="submit">Modify password</button>
+                                <button class="btn btn-warning" type="submit">Modify password</button>
 
-                    </form>
-                </li>
+                            </form>
+                        </li>
 
-            </ul>
+                    </ul>
 
-        </div>
+                </div>
 
-    {% else %}
-        <div class="alert-danger">You must be logged to perform this action.</div>
-    {% endif %}
+            {% else %}
+                <div class="alert-danger">You must be logged to perform this action.</div>
+            {% endif %}
 
 
-{% endblock %}
+        {% endblock %}
