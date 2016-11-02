@@ -13,7 +13,11 @@ final class UserController
     private $user;
     private $sentinel;
 
+<<<<<<< HEAD
     public function __construct($view)
+=======
+    public function __construct($view, LoggerInterface $logger, $user)
+>>>>>>> 54bd759a171104de296a52ffcd890a1fecbcb759
     {
         $this->view = $view;
         $this->logger = $logger;
