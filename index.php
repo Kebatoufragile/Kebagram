@@ -38,7 +38,7 @@ $container['view'] = function($container){
     return $view;
 };
 
-if(!is_null($_SESSION['userid']) && isset($_SESSION['userid']))
+if(isset($_SESSION['userid']))
     $_SESSION['user'] = \App\Models\User::where("id", "like", $_SESSION['userid'])->first();
 
 $container['session'] = function($container){

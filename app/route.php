@@ -6,9 +6,14 @@
 
 $app->get('/', function($request, $response, $args){
 
-    return $this->view->render($response, 'homepage.html.twig', array(
-        'user' => $this['session']['user'],
-    ));
+    if(isset($_SESSION['user'])){
+        return $this->view->render($response, 'homepage.html.twig', array(
+            'user' => $this['session']['user'],
+        ));
+    }else{
+        return $this->view->render($response, 'homepage.html.twig', array());
+    }
+
 
 })->setName('accueil');
 
@@ -24,4 +29,4 @@ $app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubm
 
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 
-$app->get('/login', 'App\Controllers\LoginController:authenticateUser')->setName('login');
+$app->get('/logout', 'App\Controllers\LogoutController:dispatch')->setName('logout');
