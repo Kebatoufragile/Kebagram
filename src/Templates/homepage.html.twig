@@ -18,7 +18,7 @@
     {# liste kebabs OU login #}
     <div class="container container-listkebabs text-center">
 
-        {% if user %}
+        {% if user.email != false %}
             Liste kebabs
         {% else %}
             <form action="/Kebagram/index.php/login" method="post">

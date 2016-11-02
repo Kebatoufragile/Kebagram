@@ -43,7 +43,7 @@
                         </ul>
                     </li>
 
-                    {% if user %}
+                    {% if user.email != false %}
                         <li><a href="/Kebagram/index.php/profile">{{ user.email }}</a></li>
                     {% else %}
 
