@@ -6,7 +6,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Pictures;
 use Illuminate\Database\Capsule\Manager as BD;
 
-define('TARGET', "public/assets/img/$_SESSION['user']->email"); //Répertoire cible -> créer un répertoire au nom de l'utilisateur -> a récupérer dans la variabloe de session $_SESSION["username"]
+$userVar = "user";
+
+define('TARGET', "public/assets/img/$_SESSION[$userVar]->email");
 define('MAX_SIZE', 2000000); //Taille max en octets du fichier
 define('WIDTH_MAX', 1200);   //Largeur max de l'image en pixels
 define('HEIGHT_MAX', 900);  //Hauteur max de l'image en pixels
@@ -34,10 +36,12 @@ final class PictureController extends AbstractController{
       $extension = '';
       $message = '';
       $nomImage = '';
-      $bdd = new BD();
-      $bdd->addConnection(parse_ini_file('../../conf/db_config.ini'));
-      $bdd->setAsGlobal();
-      $bdd->bootEloquent();
+      /*
+      *$bdd = new BD();
+      *$bdd->addConnection(parse_ini_file('../../db_config.ini'));
+      *$bdd->setAsGlobal();
+      *$bdd->bootEloquent();
+      */
 
       $pic = new Pictures();
 
@@ -81,9 +85,9 @@ final class PictureController extends AbstractController{
                                   $pic->Name = $_FILES['fichier']['name'];
                                   $pic->Link = TARGET.'/'.$nomImage;
                                   $pic->uId = 6;
-                                  $pic->Desc = "Image de test";
+                                  $pic->Desc = filter_var($_POST["name"], FILTER_SANITISE_STRING);
                                   $pic->Date = date("m.d.y");
-                                  $pic->AuthorKey = 1;
+                                  $pic->AuthorKey = $_SESSION['user']->id;
                                   $pic->save();
                               }else{
                                   //Sinon on affiche une erreur système
