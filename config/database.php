@@ -7,7 +7,7 @@ $capsule = new Capsule;
 $capsule->addConnection([
     'driver'    => 'mysql',
     'host'      => 'localhost',
-    'database'  => 'boilerplate_slim',
+    'database'  => 'kebagram',
     'username'  => 'root',
     'password'  => '',
     'charset'   => 'utf8',

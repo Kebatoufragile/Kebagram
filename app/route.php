@@ -13,9 +13,12 @@ $app->get('/', function($request, $response, $args){
         $kebabslist[] = array($picture, \App\Models\Tag::where("uid", "like", $picture->uid));
     }
 
+    if(isset($_SESSION['userid']))
+        $_SESSION['user'] = \App\Models\User::where("id", "like", $_SESSION['userid'])->first();
+
     if(isset($_SESSION['user'])){
         return $this->view->render($response, 'homepage.html.twig', array(
-            'user' => $this['session']['user'],
+            'user' => $_SESSION['user'],
             'kebabslist' => $kebabslist,
         ));
     }else{
@@ -42,3 +45,29 @@ $app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubm
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 
 $app->get('/logout', 'App\Controllers\LogoutController:dispatch')->setName('logout');
+
+$app->get('/accueil', function($request, $response, $args){
+
+    // recuperation des images et des tags associes
+    $pictures = \App\Models\Pictures::all();
+    $kebabslist = array();
+    foreach($pictures as $picture){
+        $kebabslist[] = array($picture, \App\Models\Tag::where("uid", "like", $picture->uid));
+    }
+
+    if(isset($_SESSION['userid']))
+        $_SESSION['user'] = \App\Models\User::where("id", "like", $_SESSION['userid'])->first();
+
+    if(isset($_SESSION['user'])){
+        return $this->view->render($response, 'homepage.html.twig', array(
+            'user' => $_SESSION['user'],
+            'kebabslist' => $kebabslist,
+        ));
+    }else{
+        return $this->view->render($response, 'homepage.html.twig', array(
+            'kebabslist' => $kebabslist,
+        ));
+    }
+
+
+})->setName('accueil');
