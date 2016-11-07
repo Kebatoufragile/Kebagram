@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Pictures;
 use Illuminate\Database\Capsule\Manager as BD;
 
-define('TARGET', "../public/assets/img/kebabs");
+define('TARGET', "../public/assets/img/kebabs/");
 define('MAX_SIZE', 2000000); //Taille max en octets du fichier
 define('WIDTH_MAX', 1200);   //Largeur max de l'image en pixels
 define('HEIGHT_MAX', 900);  //Hauteur max de l'image en pixels
