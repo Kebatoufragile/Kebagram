@@ -20,38 +20,46 @@
     {% if user.email != false %}
         {# liste kebabs #}
 
-        {# {% for publi in app.kebabs %} #}
         <div class="container container-listkebabs">
 
-            <div class="panel panel-warning container-kebab">
-                <div class="panel-heading"><h1 class="panel-title">Username</h1></div>
+            {% if kebabslist|length > 0 %}
+                {% for publi in kebabslist %}
+                    <div class="panel panel-primary container-kebab">
+                        <div class="panel-heading"><h1 class="panel-title">{{ publi[0].authorkey }}</h1></div>
 
-                {# img #}
-                <div class="panel-body">
-                    <img class="img-responsive" src="/Kebagram/public/assets/img/avatars/lecorse.png"><br>
-                </div>
+                        {# img #}
+                        <div class="panel-body">
+                            <img class="img-responsive" src="/Kebagram/public/assets/img/kebabs/{{ publi[0].link }}"><br>
+                        </div>
 
-                <ul class="list-group">
+                        <ul class="list-group">
 
-                    {# desc #}
-                    <li class="list-group-item">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum dolor a eleifend facilisis. Cras et augue turpis. Praesent odio purus, laoreet non orci non, sodales dignissim nunc. Nam vulputate semper sodales. Etiam a purus sagittis, dapibus augue vel, laoreet quam. Pellentesque at bibendum nulla, eu imperdiet turpis.</p>
-                    </li>
+                            {# desc #}
+                            <li class="list-group-item">
+                                <p>{{ publi[0].desc }}</p>
+                            </li>
 
-                    {# tags #}
-                    <li class="list-group-item">
-                        <p class="textgrise">#Lorem #Ipsum #Dolor #Sit #Amet</p>
-                    </li>
+                            {# tags #}
+                            <li class="list-group-item">
+                                <p class="textgrise">
+                                    {% for tag in publi[1] %}
+                                        {{ tag }} &nbsp;
+                                    {% endfor %}
+                                </p>
+                            </li>
 
-                    {# comments #}
-                    <li class="list-group-item">
-                        Commentaires
-                    </li>
-                </ul>
-            </div>
-
+                            {# comments #}
+                            <li class="list-group-item">
+                                Commentaires
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4 class="text-center">No kebab to display.</h4>
+            {% endif %}
         </div>
-        {# {% endfor %} #}
+
 
     {% else %}
         {# login #}
@@ -74,10 +82,13 @@
         </div>
     {% endif %}
 
-
-
     {# boutons #}
     <div class="container container-boutons pull-right">
-        <a href="/Kebagram/index.php/addpic"><button class="btn-lg btn-success">+ Ajouter une photo</button></a>
+        {% if user.email != false %}
+            <a href="/Kebagram/index.php/addpic"><button class="btn-lg btn-success">+ Add a picture</button></a>
+        {% else %}
+            <a href="/Kebagram/index.php/signup"><button class="btn-lg btn-success">Sign up</button></a>
+        {% endif %}
     </div>
+
 {% endblock %}
