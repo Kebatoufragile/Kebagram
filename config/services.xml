@@ -1,7 +1,0 @@
-<services>
-    <service id="app.twig_extension"
-             class="AppBundle\Twig\TwigExtensionSession"
-             public="false">
-        <tag name="twig.extension" />
-    </service>
-</services>

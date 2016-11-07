@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+    {# suggestions #}
+    <div class="container container-suggestions pull-left">
+        <p><a href="#">@Suggestion1</a></p><br>
+        <p><a href="#">@Suggestion2</a></p><br>
+        <p><a href="#">@Suggestion3</a></p><br>
+        <p><a href="#">@Suggestion4</a></p><br>
+        <p><a href="#">@Suggestion5</a></p><br>
+        <p><a href="#">@Suggestion6</a></p><br>
+        <p><a href="#">@Suggestion7</a></p><br>
+        <p><a href="#">@Suggestion8</a></p><br>
+    </div>
+
+    {# liste kebabs OU login #}
+
+    {% if user.email != false %}
+        {# liste kebabs #}
+
+        <div class="container container-listkebabs">
+
+            {% if kebabslist|length > 0 %}
+                {% for publi in kebabslist %}
+                    <div class="panel panel-primary container-kebab">
+                        <div class="panel-heading"><h1 class="panel-title">{{ publi[0].authorkey }}</h1></div>
+
+                        {# img #}
+                        <div class="panel-body">
+                            <img class="img-responsive" src="/Kebagram/public/assets/img/kebabs/{{ publi[0].link }}"><br>
+                        </div>
+
+                        <ul class="list-group">
+
+                            {# desc #}
+                            <li class="list-group-item">
+                                <p>{{ publi[0].desc }}</p>
+                            </li>
+
+                            {# tags #}
+                            <li class="list-group-item">
+                                <p class="textgrise">
+                                    {% for tag in publi[1] %}
+                                        {{ tag }} &nbsp;
+                                    {% endfor %}
+                                </p>
+                            </li>
+
+                            {# comments #}
+                            <li class="list-group-item">
+                                Commentaires
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4 class="text-center">No kebab to display.</h4>
+            {% endif %}
+        </div>
+
+
+    {% else %}
+        {# login #}
+        <div class="container container-listkebabs text-center">
+
+            <form action="/Kebagram/index.php/login" method="post">
+                <div class="form-group">
+                    <label for="usernameLogin">Username or Email address</label>
+                    <input class="form-control" id="usernameLogin" name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordLogin">Password</label>
+                    <input class="form-control" id="passwordLogin" name="password" type="password" autocomplete="off" placeholder="Password" required/>
+                </div>
+
+                <button class="btn btn-default" type="submit">Log In</button><br>
+                <a href="/Kebagram/index.php/signup">Don't you have an accout ? Sign up</a>
+            </form>
+        </div>
+    {% endif %}
+
+    {# boutons #}
+    <div class="container container-boutons pull-right">
+        {% if user.email != false %}
+            <a href="/Kebagram/index.php/addpic"><button class="btn-lg btn-success">+ Add a picture</button></a>
+        {% else %}
+            <a href="/Kebagram/index.php/signup"><button class="btn-lg btn-success">Sign up</button></a>
+        {% endif %}
+    </div>
+
+{% endblock %}
