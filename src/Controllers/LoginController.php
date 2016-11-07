@@ -28,7 +28,7 @@ final class LoginController extends AbstractController{
         $this->authenticateUser();
 
         $this->view['view']->render($response, 'homepage.html.twig', array(
-            'user' => $this->view['session']['user'],
+            'user' => $_SESSION['user'],
         ));
 
         return $response;
