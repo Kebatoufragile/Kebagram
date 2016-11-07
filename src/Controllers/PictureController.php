@@ -30,7 +30,7 @@ final class PictureController extends AbstractController{
           'name' => 'Josh'
       ]);*/
         return $this->view->render($response, 'addpicture.html.twig', [
-          'test' => 'machin'
+          'routeUpload' => $this->router->pathFor('upload')
         ]);
         //$this->router->pathFor('upload');
 
