@@ -1,5 +1,5 @@
 .container{
-    display:inline-block
+    display:inline-block;
 }
 
 .container-suggestions{
@@ -20,6 +20,14 @@
     margin-left:50px;
 }
 
+.container-kebab{
+    margin-top:5px;
+}
+.container-kebab > .panel-body > img{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .container-boutons{
     width:15%;
 }
@@ -31,4 +39,8 @@ body{
 .panel-profile{
     margin-left:20%;
     margin-right:20%;
+}
+
+.textgrise{
+    color:gray;
 }

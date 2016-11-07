@@ -15,7 +15,7 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
@@ -26,16 +26,16 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
             'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
         ),
-        'P' =>
+        'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
         ),
-        'M' =>
+        'M' => 
         array (
             'Monolog\\' => 8,
         ),
-        'I' =>
+        'I' => 
         array (
             'Interop\\Container\\' => 18,
             'Illuminate\\Support\\' => 19,
@@ -44,137 +44,137 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
-        'F' =>
+        'F' => 
         array (
             'FastRoute\\' => 10,
             'Facebook\\' => 9,
         ),
-        'C' =>
+        'C' => 
         array (
             'Cartalyst\\Support\\' => 18,
             'Cartalyst\\Sentinel\\' => 19,
             'Carbon\\' => 7,
         ),
-        'A' =>
+        'A' => 
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Mbstring\\' =>
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Component\\Translation\\' =>
+        'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'Symfony\\Component\\HttpFoundation\\' =>
+        'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Slim\\Views\\' =>
+        'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/php-view/src',
             1 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
-        'Slim\\HttpCache\\' =>
+        'Slim\\HttpCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/http-cache/src',
         ),
-        'Slim\\Flash\\' =>
+        'Slim\\Flash\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/flash/src',
         ),
-        'Slim\\Csrf\\' =>
+        'Slim\\Csrf\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/csrf/src',
         ),
-        'Slim\\' =>
+        'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
         ),
-        'Psr\\Log\\' =>
+        'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' =>
+        'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Monolog\\' =>
+        'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Interop\\Container\\' =>
+        'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
-        'Illuminate\\Support\\' =>
+        'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/support',
         ),
-        'Illuminate\\Events\\' =>
+        'Illuminate\\Events\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/events',
         ),
-        'Illuminate\\Database\\' =>
+        'Illuminate\\Database\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/database',
         ),
-        'Illuminate\\Contracts\\' =>
+        'Illuminate\\Contracts\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/contracts',
         ),
-        'Illuminate\\Container\\' =>
+        'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
-        'FastRoute\\' =>
+        'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-        'Facebook\\' =>
+        'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook',
         ),
-        'Cartalyst\\Support\\' =>
+        'Cartalyst\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/cartalyst/support/src',
         ),
-        'Cartalyst\\Sentinel\\' =>
+        'Cartalyst\\Sentinel\\' => 
         array (
             0 => __DIR__ . '/..' . '/cartalyst/sentinel/src',
         ),
-        'Carbon\\' =>
+        'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'App\\' =>
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'T' =>
+        'T' => 
         array (
-            'Twig_' =>
+            'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
-        'P' =>
+        'P' => 
         array (
-            'Pimple' =>
+            'Pimple' => 
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
             ),
         ),
-        'D' =>
+        'D' => 
         array (
-            'Doctrine\\Common\\Inflector\\' =>
+            'Doctrine\\Common\\Inflector\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
@@ -182,93 +182,14 @@ class ComposerStaticInit1dd154ff134cb94bf8240f76996814c9
     );
 
     public static $classMap = array (
-        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/src/Controllers/HomeController.php',
-        'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/src/Controllers/UserController.php',
-        'App\\Models\\User' => __DIR__ . '/../..' . '/src/Models/User.php',
-        'App\\Repositories\\BaseRepository' => __DIR__ . '/../..' . '/src/Repositories/BaseRepository.php',
-        'App\\Repositories\\HomeRepository' => __DIR__ . '/../..' . '/src/Repositories/HomeRepository.php',
-        'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/src/Repositories/UserRepository.php',
-        'App\\Services\\LoremIpsumGenerator' => __DIR__ . '/../..' . '/src/Services/LoremIpsumGenerator.php',
-        'App\\Services\\Mailer' => __DIR__ . '/../..' . '/src/Services/Mailer.php',
-        'App\\Services\\Media' => __DIR__ . '/../..' . '/src/Services/Media.php',
-        'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
-        'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
-        'Cartalyst\\Sentinel\\Activations\\ActivationInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Activations/ActivationInterface.php',
-        'Cartalyst\\Sentinel\\Activations\\ActivationRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Activations/ActivationRepositoryInterface.php',
-        'Cartalyst\\Sentinel\\Activations\\EloquentActivation' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Activations/EloquentActivation.php',
-        'Cartalyst\\Sentinel\\Activations\\IlluminateActivationRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Activations/IlluminateActivationRepository.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\ActivationCheckpoint' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/ActivationCheckpoint.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\AuthenticatedCheckpoint' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/AuthenticatedCheckpoint.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\CheckpointInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/CheckpointInterface.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\NotActivatedException' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/NotActivatedException.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\ThrottleCheckpoint' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/ThrottleCheckpoint.php',
-        'Cartalyst\\Sentinel\\Checkpoints\\ThrottlingException' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Checkpoints/ThrottlingException.php',
-        'Cartalyst\\Sentinel\\Cookies\\CICookie' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Cookies/CICookie.php',
-        'Cartalyst\\Sentinel\\Cookies\\CookieInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Cookies/CookieInterface.php',
-        'Cartalyst\\Sentinel\\Cookies\\FuelPHPCookie' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Cookies/FuelPHPCookie.php',
-        'Cartalyst\\Sentinel\\Cookies\\IlluminateCookie' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Cookies/IlluminateCookie.php',
-        'Cartalyst\\Sentinel\\Cookies\\NativeCookie' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Cookies/NativeCookie.php',
-        'Cartalyst\\Sentinel\\Hashing\\BcryptHasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/BcryptHasher.php',
-        'Cartalyst\\Sentinel\\Hashing\\CallbackHasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/CallbackHasher.php',
-        'Cartalyst\\Sentinel\\Hashing\\Hasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/Hasher.php',
-        'Cartalyst\\Sentinel\\Hashing\\HasherInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/HasherInterface.php',
-        'Cartalyst\\Sentinel\\Hashing\\NativeHasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/NativeHasher.php',
-        'Cartalyst\\Sentinel\\Hashing\\Sha256Hasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/Sha256Hasher.php',
-        'Cartalyst\\Sentinel\\Hashing\\WhirlpoolHasher' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Hashing/WhirlpoolHasher.php',
-        'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Laravel/Facades/Activation.php',
-        'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Laravel/Facades/Reminder.php',
-        'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Laravel/Facades/Sentinel.php',
-        'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Laravel/SentinelServiceProvider.php',
-        'Cartalyst\\Sentinel\\Native\\ConfigRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Native/ConfigRepository.php',
-        'Cartalyst\\Sentinel\\Native\\Facades\\Sentinel' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Native/Facades/Sentinel.php',
-        'Cartalyst\\Sentinel\\Native\\SentinelBootstrapper' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Native/SentinelBootstrapper.php',
-        'Cartalyst\\Sentinel\\Permissions\\PermissibleInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/PermissibleInterface.php',
-        'Cartalyst\\Sentinel\\Permissions\\PermissibleTrait' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/PermissibleTrait.php',
-        'Cartalyst\\Sentinel\\Permissions\\PermissionsInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/PermissionsInterface.php',
-        'Cartalyst\\Sentinel\\Permissions\\PermissionsTrait' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/PermissionsTrait.php',
-        'Cartalyst\\Sentinel\\Permissions\\StandardPermissions' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/StandardPermissions.php',
-        'Cartalyst\\Sentinel\\Permissions\\StrictPermissions' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Permissions/StrictPermissions.php',
-        'Cartalyst\\Sentinel\\Persistences\\EloquentPersistence' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Persistences/EloquentPersistence.php',
-        'Cartalyst\\Sentinel\\Persistences\\IlluminatePersistenceRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Persistences/IlluminatePersistenceRepository.php',
-        'Cartalyst\\Sentinel\\Persistences\\PersistableInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Persistences/PersistableInterface.php',
-        'Cartalyst\\Sentinel\\Persistences\\PersistenceInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Persistences/PersistenceInterface.php',
-        'Cartalyst\\Sentinel\\Persistences\\PersistenceRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Persistences/PersistenceRepositoryInterface.php',
-        'Cartalyst\\Sentinel\\Reminders\\EloquentReminder' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Reminders/EloquentReminder.php',
-        'Cartalyst\\Sentinel\\Reminders\\IlluminateReminderRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Reminders/IlluminateReminderRepository.php',
-        'Cartalyst\\Sentinel\\Reminders\\ReminderRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Reminders/ReminderRepositoryInterface.php',
-        'Cartalyst\\Sentinel\\Roles\\EloquentRole' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Roles/EloquentRole.php',
-        'Cartalyst\\Sentinel\\Roles\\IlluminateRoleRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Roles/IlluminateRoleRepository.php',
-        'Cartalyst\\Sentinel\\Roles\\RoleInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Roles/RoleInterface.php',
-        'Cartalyst\\Sentinel\\Roles\\RoleRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Roles/RoleRepositoryInterface.php',
-        'Cartalyst\\Sentinel\\Roles\\RoleableInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Roles/RoleableInterface.php',
-        'Cartalyst\\Sentinel\\Sentinel' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sentinel.php',
-        'Cartalyst\\Sentinel\\Sessions\\CISession' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sessions/CISession.php',
-        'Cartalyst\\Sentinel\\Sessions\\FuelPHPSession' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sessions/FuelPHPSession.php',
-        'Cartalyst\\Sentinel\\Sessions\\IlluminateSession' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sessions/IlluminateSession.php',
-        'Cartalyst\\Sentinel\\Sessions\\NativeSession' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sessions/NativeSession.php',
-        'Cartalyst\\Sentinel\\Sessions\\SessionInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Sessions/SessionInterface.php',
-        'Cartalyst\\Sentinel\\Throttling\\EloquentThrottle' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Throttling/EloquentThrottle.php',
-        'Cartalyst\\Sentinel\\Throttling\\IlluminateThrottleRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Throttling/IlluminateThrottleRepository.php',
-        'Cartalyst\\Sentinel\\Throttling\\ThrottleRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Throttling/ThrottleRepositoryInterface.php',
-        'Cartalyst\\Sentinel\\Users\\EloquentUser' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Users/EloquentUser.php',
-        'Cartalyst\\Sentinel\\Users\\IlluminateUserRepository' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Users/IlluminateUserRepository.php',
-        'Cartalyst\\Sentinel\\Users\\UserInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Users/UserInterface.php',
-        'Cartalyst\\Sentinel\\Users\\UserRepositoryInterface' => __DIR__ . '/..' . '/cartalyst/sentinel/src/Users/UserRepositoryInterface.php',
-        'Cartalyst\\Support\\Collection' => __DIR__ . '/..' . '/cartalyst/support/src/Collection.php',
-        'Cartalyst\\Support\\Contracts\\NamespacedEntityInterface' => __DIR__ . '/..' . '/cartalyst/support/src/Contracts/NamespacedEntityInterface.php',
-        'Cartalyst\\Support\\Contracts\\ValidatorInterface' => __DIR__ . '/..' . '/cartalyst/support/src/Contracts/ValidatorInterface.php',
-        'Cartalyst\\Support\\Handlers\\EventHandler' => __DIR__ . '/..' . '/cartalyst/support/src/Handlers/EventHandler.php',
-        'Cartalyst\\Support\\Handlers\\EventHandlerInterface' => __DIR__ . '/..' . '/cartalyst/support/src/Handlers/EventHandlerInterface.php',
-        'Cartalyst\\Support\\Mailer' => __DIR__ . '/..' . '/cartalyst/support/src/Mailer.php',
-        'Cartalyst\\Support\\ServiceProvider' => __DIR__ . '/..' . '/cartalyst/support/src/ServiceProvider.php',
-        'Cartalyst\\Support\\Traits\\ContainerTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/ContainerTrait.php',
-        'Cartalyst\\Support\\Traits\\EventTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/EventTrait.php',
-        'Cartalyst\\Support\\Traits\\MailerTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/MailerTrait.php',
-        'Cartalyst\\Support\\Traits\\NamespacedEntityTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/NamespacedEntityTrait.php',
-        'Cartalyst\\Support\\Traits\\RepositoryTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/RepositoryTrait.php',
-        'Cartalyst\\Support\\Traits\\ValidatorTrait' => __DIR__ . '/..' . '/cartalyst/support/src/Traits/ValidatorTrait.php',
-        'Cartalyst\\Support\\Validator' => __DIR__ . '/..' . '/cartalyst/support/src/Validator.php',
-        'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
+        'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
+        'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
+        'PHPMailerOAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauth.php',
+        'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
+        'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
+        'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
+        'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
+        'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

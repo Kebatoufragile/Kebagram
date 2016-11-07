@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Model\User;
+use App\Models\User;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
-use Illuminate\Support\Facades\DB;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
