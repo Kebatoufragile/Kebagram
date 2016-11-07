@@ -19,7 +19,7 @@ final class ProfileController extends AbstractController{
     public function dispatch(Request $request, Response $response, $args){
 
         $this->view['view']->render($response, 'profile.html.twig', array(
-            'user' => $this->view['session']['user'],
+            'user' => $_SESSION['user'],
         ));
 
         return $response;
