@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use App\Model\Pictures;
+use App\Models\Pictures;
 use Illuminate\Database\Capsule\Manager as BD;
 
 define('TARGET', "public/assets/img/");
@@ -15,20 +15,26 @@ define('HEIGHT_MAX', 900);  //Hauteur max de l'image en pixels
 final class PictureController extends AbstractController{
 
     protected $view;
-    protected $logger;
+    protected $router;
 
-    public function __construct($view) {
+    public function __construct($view, $router) {
 
         parent::__construct($view);
+        $this->router = $router;
 
     }
 
     public function dispatch(Request $request, Response $response, $args) {
 
+      /*echo $app->getContainer()->get('router')->pathFor('hello', [
+          'name' => 'Josh'
+      ]);*/
+        return $this->view->render($response, 'addpicture.html.twig', [
+          'test' => 'machin'
+        ]);
+        //$this->router->pathFor('upload');
 
-        $this->view['view']->render($response, 'addpicture.html.twig');
-
-        return $response;
+      //  return $response;
 
     }
 
@@ -41,13 +47,6 @@ final class PictureController extends AbstractController{
       $extension = '';
       $message = '';
       $nomImage = '';
-      /*
-      *$bdd = new BD();
-      *$bdd->addConnection(parse_ini_file('../../db_config.ini'));
-      *$bdd->setAsGlobal();
-      *$bdd->bootEloquent();
-      */
-
       $pic = new Pictures();
 
       /*************************************************************************
@@ -89,7 +88,6 @@ final class PictureController extends AbstractController{
                                   //test data
                                   $pic->Name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
                                   $pic->Link = TARGET.'/'.$nomImage;
-                                  $pic->uId = 6;
                                   $pic->Desc = filter_var($_POST["desc"], FILTER_SANITIZE_STRING);
                                   $pic->Date = date("m.d.y");
                                   $pic->AuthorKey = $_SESSION["userid"];
