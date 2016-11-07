@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Pictures;
 use Illuminate\Database\Capsule\Manager as BD;
 
-define('TARGET', "../public/assets/img/");
+define('TARGET', "../public/assets/img/kebabs");
 define('MAX_SIZE', 2000000); //Taille max en octets du fichier
 define('WIDTH_MAX', 1200);   //Largeur max de l'image en pixels
 define('HEIGHT_MAX', 900);  //Hauteur max de l'image en pixels
@@ -87,7 +87,7 @@ final class PictureController extends AbstractController{
                                   //insert database
                                   //test data
                                   $pic->Name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
-                                  $pic->Link = TARGET.'/'.$nomImage;
+                                  $pic->Link = $nomImage;
                                   $pic->Desc = filter_var($_POST["desc"], FILTER_SANITIZE_STRING);
                                   $pic->Date = date("m.d.y");
                                   $pic->AuthorKey = $_SESSION["userid"];
