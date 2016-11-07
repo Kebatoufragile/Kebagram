@@ -45,6 +45,7 @@ $container['session'] = function($container){
     return $_SESSION;
 };
 
+
 $app->run();
 
 
