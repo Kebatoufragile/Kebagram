@@ -28,6 +28,13 @@ final class PictureController extends AbstractController{
     public function dispatch(Request $request, Response $response, $args) {
 
 
+        $this->view['view']->render($response, 'addpicture.html.twig');
+
+        return $response;
+
+    }
+
+    public function upload(){
       //Tableaux de données
       $tabExt = array('jpg','png','jpeg', 'gif'); //Extensions autorisées
       $infosImg = array();
@@ -113,12 +120,6 @@ final class PictureController extends AbstractController{
               $message = 'Veuillez remplir le formulaire svp !';
           }
       }
-
-
-        $this->view['view']->render($response, 'addpicture.html.twig');
-
-        return $response;
-
     }
 
 
