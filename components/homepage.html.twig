@@ -65,7 +65,7 @@
         {# login #}
         <div class="container container-listkebabs text-center">
 
-            <form action="/Kebagram/index.php/login" method="post">
+            <form action="login" method="post">
                 <div class="form-group">
                     <label for="usernameLogin">Username or Email address</label>
                     <input class="form-control" id="usernameLogin" name="username" type="text" autocomplete="off" placeholder="Username or email address" autofocus required/>
@@ -77,7 +77,7 @@
                 </div>
 
                 <button class="btn btn-default" type="submit">Log In</button><br>
-                <a href="/Kebagram/index.php/signup">Don't you have an accout ? Sign up</a>
+                <a href="signup">Don't you have an accout ? Sign up</a>
             </form>
         </div>
     {% endif %}
@@ -85,9 +85,9 @@
     {# boutons #}
     <div class="container container-boutons pull-right">
         {% if user.email != false %}
-            <a href="/Kebagram/index.php/addpic"><button class="btn-lg btn-success">+ Add a picture</button></a>
+            <a href="addpic"><button class="btn-lg btn-success">+ Add a picture</button></a>
         {% else %}
-            <a href="/Kebagram/index.php/signup"><button class="btn-lg btn-success">Sign up</button></a>
+            <a href="signup"><button class="btn-lg btn-success">Sign up</button></a>
         {% endif %}
     </div>
 

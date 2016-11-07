@@ -24,13 +24,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/Kebagram/">{# <img alt="Kebagram" src="public/assets/img/logo.png"> #}Kebagram</a>
+                <a class="navbar-brand" href="accueil">{# <img alt="Kebagram" src="public/assets/img/logo.png"> #}Kebagram</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Kebagram/">Home</a></li>
+                    <li class="active"><a href="accueil">Home</a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications<span class="caret"></span></a>
@@ -44,11 +44,11 @@
                     </li>
 
                     {% if user.email != false %}
-                        <li><a href="/Kebagram/index.php/profile">{{ user.email }}</a></li>
-                        <li><a href="/Kebagram/index.php/logout"><b>Log out</b></a></li>
+                        <li><a href="profile">{{ user.email }}</a></li>
+                        <li><a href="logout"><b>Log out</b></a></li>
                     {% else %}
 
-                        <li><a href="/Kebagram/index.php/signup">Sign up</a></li>
+                        <li><a href="signup">Sign up</a></li>
                     {% endif %}
 
                 </ul>
