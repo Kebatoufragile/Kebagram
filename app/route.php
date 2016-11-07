@@ -52,7 +52,7 @@ $app->get('/accueil', function($request, $response, $args){
     $pictures = \App\Models\Pictures::all();
     $kebabslist = array();
     foreach($pictures as $picture){
-        $kebabslist[] = array($picture, \App\Models\Tag::where("uid", "like", $picture->uid));
+        $kebabslist[] = array($picture, \App\Models\Tag::where("uid", "like", $picture->uId));
     }
 
     if(isset($_SESSION['userid']))
