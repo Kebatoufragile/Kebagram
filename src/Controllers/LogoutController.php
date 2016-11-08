@@ -29,9 +29,7 @@ final class LogoutController extends AbstractController{
             $this->sentinel->logout($this->sentinel->getUser());
             session_destroy();
 
-            $this->view['view']->render($response, 'homepage.html.twig', array(
-                'user' => $this->view['session']['user'],
-            ));
+            $this->view['view']->render($response, 'homepage.html.twig', array());
         }else{
             $this->view['view']->render($response, 'homepage.html.twig', array());
         }

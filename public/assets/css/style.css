@@ -44,3 +44,7 @@ body{
 .textgrise{
     color:gray;
 }
+
+.form-group input.searchbar{
+    width:400px;
+}

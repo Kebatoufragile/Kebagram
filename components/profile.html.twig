@@ -1,55 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block navbar %}
-
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="accueil">{# <img alt="Kebagram" src="public/assets/img/logo.png"> #}Kebagram</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-                    <li><a href="accueil">Home</a></li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Notification 1</a></li>
-                            <li><a href="#">Notification 2</a></li>
-                            <li><a href="#">Notification 3</a></li>
-                            <li><a href="#">Notification 4</a></li>
-                            <li><a href="#">Notification 5</a></li>
-                        </ul>
-                    </li>
-
-                    {% if user.email != false %}
-                        <li class="active"><a href="profile">{{ user.email }}</a></li>
-                        <li><a href="logout"><b>Log out</b></a></li>
-                    {% endif %}
-
-                </ul>
-
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Search using #tags or @usernames..."/>
-                    </div>
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
-
-            </div>
-        </div>
-    </nav>
-{% endblock %}
-
+{% block homeactive %}{% endblock %}
+{% block profileactive %}class="active"{% endblock %}
 
         {% block content %}
 

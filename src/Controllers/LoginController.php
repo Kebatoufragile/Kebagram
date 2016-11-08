@@ -25,14 +25,21 @@ final class LoginController extends AbstractController{
 
     public function dispatch(Request $request, Response $response, $args){
 
-        $this->authenticateUser();
-
-        $this->view['view']->render($response, 'homepage.html.twig', array(
-            'user' => $_SESSION['user'],
-        ));
+        if($this->authenticateUser() == 1){
+            $this->view['view']->render($response, 'homepage.html.twig', array(
+                'error' => 'Unable to log you, check your email address and your password, then try again.'
+            ));
+        }elseif($this->authenticateUser() == 1){
+            $this->view['view']->render($response, 'homepage.html.twig', array(
+                'error' => 'Unable to log you, fields are missing, please try again.'
+            ));
+        }else{
+            $this->view['view']->render($response, 'homepage.html.twig', array(
+                'user' => $_SESSION['user'],
+            ));
+        }
 
         return $response;
-
     }
 
 
@@ -59,12 +66,14 @@ final class LoginController extends AbstractController{
                 $_SESSION['userid'] = $userInterface->getUserId();
                 $_SESSION['user'] = $u;
 
+                header('Location: index.php');
+                exit();
             }else{
-                echo '<script>alert("ça ne marche pas")</script>';
+                return 1;
             }
 
         }else{
-            echo '<script>alert("il manque des données chef")</script>';
+            return 2;
         }
     }
 }
