@@ -3,34 +3,53 @@
 {% block content %}
 
     <div class="panel panel-warning panel-profile">
-        <div class="panel-heading"><h1 class="panel-title">Add Picture</h1></div>
 
-        <div class="panel-body text-center">
-            <form action="addpic/upload" method="post" enctype="multipart/form-data">
-
-                <div class="form-group center-block">
-                    <label for="picture">Picture to </label>
-                    <input type="file" id="picture" name="picture" placeholder="Choose a picture to upload" required>
+        {# error #}
+        {% if notlog != false %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{ notlog }}
+            </div>
+        {% else %}
+            {# image non uploadee #}
+            {% if error != false %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{ error }}
                 </div>
+            {% endif %}
 
-                <div class="form-group">
-                    <label for="name">Choose a name for your kebab</label>
-                    <input id="name" name="name" type="text" placeholder="Add a name for your kebab" required>
-                    <label for="tags">Choose multiple tags</label>
-                    <input id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse'" required>
-                    <br>
-                    <label for='desc'>Add a description</label>
-                    <br>
+            <div class="panel-heading"><h1 class="panel-title">Add Picture</h1></div>
+
+            <div class="panel-body text-center">
+                <form action="upload" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group center-block">
+                        <label for="picture">Picture to </label>
+                        <input type="file" id="picture" name="picture" placeholder="Choose a picture to upload" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Choose a name for your kebab</label>
+                        <input id="name" name="name" type="text" placeholder="Add a name for your kebab" required>
+                        <label for="tags">Choose multiple tags</label>
+                        <input id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse'" required>
+                        <br>
+                        <label for='desc'>Add a description</label>
+                        <br>
                     <textarea name='desc' id='desc' rows="10" cols="50" required>
 
                     </textarea>
-                </div>
+                    </div>
 
-                <button class="btn btn-default" type="submit">Add picture</button>
+                    <button class="btn btn-default" type="submit">Add picture</button>
 
-            </form>
+                </form>
 
-        </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}

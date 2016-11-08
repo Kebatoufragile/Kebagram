@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\User;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Pictures;
@@ -26,98 +27,113 @@ final class PictureController extends AbstractController{
 
     public function dispatch(Request $request, Response $response, $args) {
 
-      /*echo $app->getContainer()->get('router')->pathFor('hello', [
-          'name' => 'Josh'
-      ]);*/
-        return $this->view->render($response, 'addpicture.html.twig', [
-          'test' => 'machin'
-        ]);
+        /*echo $app->getContainer()->get('router')->pathFor('hello', [
+            'name' => 'Josh'
+        ]);*/
+        if(isset($_SESSION['user'])){
+            return $this->view->render($response, 'addpicture.html.twig', [
+                'user' => $_SESSION['user']
+            ]);
+        }else{
+            return $this->view->render($response, 'addpicture.html.twig', array(
+                'notlog' => 'You must be logged to perform this action.'
+            ));
+        }
         //$this->router->pathFor('upload');
 
-      //  return $response;
+        //  return $response;
 
     }
 
-    public function upload(){
-      //Tableaux de données
-      $tabExt = array('jpg','png','jpeg', 'gif'); //Extensions autorisées
-      $infosImg = array();
+    public function upload(Request $request, Response $response, $args){
+        //Tableaux de données
+        $tabExt = array('jpg','png','jpeg', 'gif'); //Extensions autorisées
+        $infosImg = array();
 
-      //Variables
-      $extension = '';
-      $message = '';
-      $nomImage = '';
-      $pic = new Pictures();
+        //Variables
+        $extension = '';
+        $message = '';
+        $nomImage = '';
+        $pic = new Pictures();
 
-      /*************************************************************************
-       * Creation du repertoire cible si inexistant
-       ***********************************************************************/
-      if(!is_dir(TARGET)){
-          if(!mkdir(TARGET, 777)) {
-              exit('Erreur : le repertoire cible ne peut-être créé ! Vérifiez que vous disposez des droits suffisants pour le faire ou créez le manuellement !');
-          }
-      }
+        /*************************************************************************
+         * Creation du repertoire cible si inexistant
+         ***********************************************************************/
+        if(!is_dir(TARGET)){
+            if(!mkdir(TARGET, 777)) {
+                exit('Erreur : le repertoire cible ne peut-être créé ! Vérifiez que vous disposez des droits suffisants pour le faire ou créez le manuellement !');
+            }
+        }
 
-      /*************************************************************************
-       * Script d'upload
-       ************************************************************************/
-      if(!empty($_POST)){
-          //On vérifie si le champ de l'extension est rempli
-          if( !empty($_FILES['picture']['name'])){
-              //Récupération de l'extension du fichier
-              $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+        /*************************************************************************
+         * Script d'upload
+         ************************************************************************/
+        if(!empty($_POST)){
+            //On vérifie si le champ de l'extension est rempli
+            if( !empty($_FILES['picture']['name'])){
+                //Récupération de l'extension du fichier
+                $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
-              //On vérifie l'extension du fichier
-              if(in_array(strtolower($extension), $tabExt)){
-                  //On récupére les dimensions du fichier
-                  $infosImg = getimagesize($_FILES['picture']['tmp_name']);
+                //On vérifie l'extension du fichier
+                if(in_array(strtolower($extension), $tabExt)){
+                    //On récupére les dimensions du fichier
+                    $infosImg = getimagesize($_FILES['picture']['tmp_name']);
 
-                  //On vérifie le type de l'image
-                  if($infosImg[2] >= 1 && $infosImg[2] <= 14){
-                      //On vérifie les dimensions et taille de l'image
-                      if(($infosImg[0]<=WIDTH_MAX) && ($infosImg[1]<=HEIGHT_MAX) && (filesize($_FILES['picture']['tmp_name'])<=MAX_SIZE)){
-                          //Parcours du tableau d'erreur
-                          if(isset($_FILES['picture']['error']) && UPLOAD_ERR_OK === $_FILES['picture']['error']){
-                              //On renomme le fichier
-                              $nomImage = md5(uniqid()).'.'.$extension;
+                    //On vérifie le type de l'image
+                    if($infosImg[2] >= 1 && $infosImg[2] <= 14){
+                        //On vérifie les dimensions et taille de l'image
+                        if(($infosImg[0]<=WIDTH_MAX) && ($infosImg[1]<=HEIGHT_MAX) && (filesize($_FILES['picture']['tmp_name'])<=MAX_SIZE)){
+                            //Parcours du tableau d'erreur
+                            if(isset($_FILES['picture']['error']) && UPLOAD_ERR_OK === $_FILES['picture']['error']){
+                                //On renomme le fichier
+                                $nomImage = md5(uniqid()).'.'.$extension;
 
-                              //Si c'est OK, on test l'upload
-                              if(move_uploaded_file($_FILES['picture']['tmp_name'], TARGET.$nomImage)){
-                                  $message = 'Upload réussi !';
-                                  //insert database
-                                  //test data
-                                  $pic->Name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
-                                  $pic->Link = $nomImage;
-                                  $pic->Desc = filter_var($_POST["desc"], FILTER_SANITIZE_STRING);
-                                  $pic->Date = date("m.d.y");
-                                  $pic->AuthorKey = $_SESSION["userid"];
-                                  $pic->save();
-                              }else{
-                                  //Sinon on affiche une erreur système
-                                  $message = 'Problème lors de l\'upload !';
-                              }
-                          }else{
-                              $message = 'Une erreur interne a empêché l\upload de l\image';
-                          }
-                      }else{
-                          //Sinon erreur sur les dimensions et taille de l'image
-                          $message = 'Erreur dans les dimensions de l\'image';
-                      }
-                  }else{
-                      //Sinon erreur sur le type de l'image
-                      $message = 'Le fichier à uploader n\'est pas une image !';
-                  }
-              }else{
-                  //Sinon on affiche une erreur sur l'extension
-                  $message = 'L\'extension du fichier est incorrecte !';
-              }
-          }else{
-              //Sinon on affiche une erreur pour le champ vide
-              $message = 'Veuillez remplir le formulaire svp !';
-          }
-      }
+                                //Si c'est OK, on test l'upload
+                                if(move_uploaded_file($_FILES['picture']['tmp_name'], TARGET.$nomImage)){
+                                    //insert database
+                                    //test data
+                                    $pic->Name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
+                                    $pic->Link = $nomImage;
+                                    $pic->Desc = filter_var($_POST["desc"], FILTER_SANITIZE_STRING);
+                                    $pic->Date = date("m.d.y");
+                                    $pic->AuthorKey = $_SESSION["userid"];
+                                    $pic->save();
 
-      echo $message;
+                                    // success
+                                    return $this->view->render($response, 'homepage.html.twig', array(
+                                        'user' => $_SESSION['user'],
+                                        'success' => 'Picture sucessfully added.',
+                                        'kebabslist' => User::getKebabs()
+                                    ));
+                                }else{
+                                    //Sinon on affiche une erreur système
+                                    $message = 'A problem has occured during the upload.';
+                                }
+                            }else{
+                                $message = 'An internal error prevented the upload.';
+                            }
+                        }else{
+                            //Sinon erreur sur les dimensions et taille de l'image
+                            $message = 'The picture is too big. (Max : 900x1200)';
+                        }
+                    }else{
+                        //Sinon erreur sur le type de l'image
+                        $message = 'The file you want to upload is not a picture.';
+                    }
+                }else{
+                    //Sinon on affiche une erreur sur l'extension
+                    $message = 'The file extension is uncorrect.';
+                }
+            }else{
+                //Sinon on affiche une erreur pour le champ vide
+                $message = 'Please fill the form.';
+            }
+        }
+
+        //error
+        return $this->view->render($response, 'addpicture.html.twig', array(
+            'error' => $message
+        ));
     }
 
 

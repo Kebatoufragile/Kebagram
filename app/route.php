@@ -12,7 +12,7 @@ $app->get('/profile', 'App\Controllers\ProfileController:dispatch')->setName('pr
 
 $app->get('/addpic', 'App\Controllers\PictureController:dispatch')->setName('addpic');
 
-$app->post('/addpic/upload', 'App\Controllers\PictureController:upload')->setName('upload');
+$app->post('/upload', 'App\Controllers\PictureController:upload')->setName('upload');
 
 $app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
 
