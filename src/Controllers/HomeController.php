@@ -21,18 +21,7 @@ final class HomeController extends AbstractController{
 
     public function dispatch(Request $request, Response $response, $args)
     {
-        // recuperation des images
-        $pictures = \App\Models\Pictures::all();
-        $kebabslist = array();
-
-        // recuperation des tags et des usernames
-        foreach($pictures as $picture){
-            $picture->email = User::where('id', 'like', $picture->AuthorKey)->first()->email;
-            $kebabslist[] = array($picture, \App\Models\Tag::where("uid", "like", $picture->uId));
-        }
-
-        if(isset($_SESSION['userid']))
-            $_SESSION['user'] = \App\Models\User::where("id", "like", $_SESSION['userid'])->first();
+        $kebabslist = User::getKebabs();
 
         if(isset($_SESSION['user'])){
             return $this->view->render($response, 'homepage.html.twig', array(
