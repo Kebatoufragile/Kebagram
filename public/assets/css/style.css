@@ -17,7 +17,7 @@
     width:60%;
     border:2px gray solid;
     border-radius: 10px;
-    margin-left:50px;
+    margin-left:20%;
 }
 
 .container-kebab{
@@ -30,6 +30,12 @@
 
 .container-boutons{
     width:15%;
+}
+
+.container-boutons-media{
+    visibility: hidden;
+    width:5%;
+    margin-right:8%;
 }
 
 body{
@@ -47,4 +53,29 @@ body{
 
 .form-group input.searchbar{
     width:400px;
+}
+
+.fixed{
+    position:fixed;
+}
+
+.fixed-media{
+    position:fixed;
+    top:150px;
+}
+
+@media screen and (max-device-width: 600px) {
+    .container-suggestions{
+        visibility: hidden;
+    }
+    .container-listkebabs{
+        width:87%;
+        margin-left:5px;
+    }
+    .container-boutons{
+        visibility: hidden;
+    }
+    .container-boutons-media{
+        visibility: visible;
+    }
 }
