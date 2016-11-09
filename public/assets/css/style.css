@@ -28,6 +28,12 @@
     margin-right:auto;
 }
 
+.container-research{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .container-boutons{
     width:15%;
 }
@@ -46,6 +52,16 @@ body{
 .panel-profile{
     margin-left:20%;
     margin-right:20%;
+}
+
+.panel-researchusers{
+    width:20%;
+    display: inline-block;
+}
+
+.panel-researchtags{
+    width:77%;
+    display: inline-block;
 }
 
 .textgrise{

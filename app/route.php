@@ -28,6 +28,8 @@ $app->post('/modify', 'App\Controllers\ProfileController:modifyProfile')->setNam
 
 $app->post('/modifyPassword', 'App\Controllers\ProfileController:modifyPassword')->setName('modifyPassword');
 
+$app->post('/search', 'App\Controllers\ResearchController:dispatch')->setName('search');
+
 
 // routes for error handling
 $app->get('/login', 'App\Controllers\HomeController:dispatch')->setName('login');
@@ -37,3 +39,5 @@ $app->get('/upload', 'App\Controllers\HomeController:dispatch')->setName('upload
 $app->get('/modify', 'App\Controllers\HomeController:dispatch')->setName('modify');
 
 $app->get('/modifyPassword', 'App\Controllers\HomeController:dispatch')->setName('modifyPassword');
+
+$app->get('/search', 'App\Controllers\HomeController:dispatch')->setName('search');

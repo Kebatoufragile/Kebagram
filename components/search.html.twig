@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block homeactive %}{% endblock %}
+
+{% block content %}
+
+    <div class="container container-research">
+
+        <div class="panel panel-primary panel-researchusers pull-left">
+
+            <div class="panel-heading"><h1 class="panel-title">Users</h1></div>
+
+            <ul class="list-group">
+
+                {# if no users #}
+                {% if users|length == 0 %}
+                    <li class="list-group-item">
+                        <p>No users to display.</p>
+                    </li>
+                {% else %}
+
+                    {% for u in users %}
+                        <li class="list-group-item">
+                            <p>{{ u.username }}</p>
+                        </li>
+                    {% endfor %}
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+        <div class="panel panel-primary panel-researchtags pull-right">
+
+            <div class="panel-heading"><h1 class="panel-title">Kebabs</h1></div>
+
+            <ul class="list-group">
+
+                {# if no kebabs #}
+                {% if kebabs|length == 0 %}
+                    <li class="list-group-item">
+                        <p>No kebabs to display.</p>
+                    </li>
+                {% else %}
+
+                    {% for k in kebabs %}
+                        <li class="list-group-item">
+                            <img class="img-responsive" src="/Kebagram/public/assets/img/kebabs/{{ k.Link }}">
+                        </li>
+                    {% endfor %}
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </div>
+
+
+{% endblock %}
