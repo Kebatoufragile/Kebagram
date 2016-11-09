@@ -16,7 +16,7 @@ class User extends Model
 
     // recuperation des tags et des usernames
     foreach($pictures as $picture){
-      $picture->email = User::where('id', 'like', $picture->AuthorKey)->first()->email;
+      $picture->username = User::where('id', 'like', $picture->AuthorKey)->first()->username;
       $kebabslist[] = array($picture, Tag::where("uid", "like", $picture->uId));
     }
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 25 Octobre 2016 à 10:07
+-- Généré le :  Mer 09 Novembre 2016 à 17:08
 -- Version du serveur :  10.1.16-MariaDB
 -- Version de PHP :  7.0.9
 
@@ -76,7 +76,9 @@ CREATE TABLE `pictures` (
   `Link` text NOT NULL,
   `Desc` text NOT NULL,
   `Date` date NOT NULL,
-  `AuthorKey` int(11) NOT NULL
+  `AuthorKey` int(11) NOT NULL,
+  `updated_at` date NOT NULL,
+  `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table images pour le projet Kebabgram';
 
 -- --------------------------------------------------------
@@ -148,25 +150,6 @@ CREATE TABLE `throttle` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `uId` int(11) NOT NULL,
-  `Username` varchar(200) NOT NULL,
-  `Password` text NOT NULL,
-  `Name` text NOT NULL,
-  `Firstname` text NOT NULL,
-  `Email` varchar(200) NOT NULL,
-  `Birthdate` date NOT NULL,
-  `SignInDate` date NOT NULL,
-  `Avatar` text NOT NULL,
-  `Salt` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table utilisateur projet PHP Kebabgram';
 
 -- --------------------------------------------------------
 
@@ -249,13 +232,6 @@ ALTER TABLE `throttle`
   ADD KEY `throttle_user_id_index` (`user_id`);
 
 --
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`uId`),
-  ADD UNIQUE KEY `Username` (`Username`,`Email`);
-
---
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -270,12 +246,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `reminders`
 --
@@ -295,7 +271,7 @@ ALTER TABLE `throttle`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
