@@ -42,22 +42,21 @@ final class InscriptionController extends AbstractController
           $mdp = filter_var($_POST['mdp'], FILTER_SANITIZE_STRING);
           $ln = filter_var($_POST['nom'], FILTER_SANITIZE_STRING);
           $fn = filter_var($_POST['prenom'], FILTER_SANITIZE_STRING);
-          $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+          $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
           if($username && $mdp && $ln && $fn && $email){
             $credentials = [
-                'username' => $_POST['username'],
-                'password' => $_POST['mdp'],
-                'last_name' => $_POST['nom'],
-                'first_name' => $_POST['prenom'],
-                'email' => $_POST['email']
+                'password' => $mdp,
+                'last_name' => $ln,
+                'first_name' => $fn,
+                'email' => $email
                 //date de naissance ?
             ];
 
             $this->sentinel->registerAndActivate($credentials);
-            /*$u=User::where('email', 'like', $_POST['email']);
-            $u->username=$_POST['username'];
-            $u->save();*/
+            $u=User::where('email', 'like', $email)->first();
+            $u->username=$username;
+            $u->save();
             return 3;
             
           } else {
