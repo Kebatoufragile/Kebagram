@@ -44,7 +44,7 @@
                     </li>
 
                     {% if user.email != false %}
-                        <li {% block profileactive %}{% endblock %}><a href="profile">{{ user.email }}</a></li>
+                        <li {% block profileactive %}{% endblock %}><a href="profile">{{ user.username }}</a></li>
                         <li><a href="logout"><b>Log out</b></a></li>
                     {% else %}
 
