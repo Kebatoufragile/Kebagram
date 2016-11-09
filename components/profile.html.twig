@@ -5,10 +5,27 @@
 
         {% block content %}
 
+            {# if user is logged #}
             {% if user %}
                 <div class="panel panel-warning panel-profile">
                     <div class="panel-heading"><h1 class="panel-title">Your Personal Informations</h1></div>
                     <div class="panel-body">
+
+                        {# errors and success #}
+                        {% if error != false %}
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                {{ error }}
+                            </div>
+                        {% endif %}
+                        {% if success != false %}
+                            <div class="alert alert-success" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                {{ success }}
+                            </div>
+                        {% endif %}
 
                         {# image #}
                         <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/lecorse.png" alt="Image profile">
@@ -18,9 +35,10 @@
 
                     <ul class="list-group">
 
+                        {# modify profile #}
                         <li class="list-group-item text-center">
                             {# infos #}
-                            <form action="profile/modify" method="post">
+                            <form action="modify" method="post">
 
                                 <div class="form-group">
                                     <label for="emailProfile">Email address</label>
@@ -44,10 +62,11 @@
                             <br>
                         </li>
 
+                        {# modify password #}
                         <li class="list-group-item text-center">
                             <br>
                             {# mdp #}
-                            <form action="profile/modifypassword" method="post">
+                            <form action="modifyPassword" method="post">
 
                                 <div class="form-group">
                                     <label for="actualPassword">Actual Password</label>
@@ -74,6 +93,7 @@
                 </div>
 
             {% else %}
+                {# user not logged #}
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>
