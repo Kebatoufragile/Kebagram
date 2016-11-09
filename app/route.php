@@ -27,3 +27,8 @@ $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpag
 $app->get('/logout', 'App\Controllers\LogoutController:dispatch')->setName('logout');
 
 $app->get('/accueil', 'App\Controllers\HomeController:dispatch')->setName('accueil');
+
+$app->post('/modify', 'App\Controllers\ProfileController:modifyProfile')->setName('modify');
+
+$app->get('/modify', 'App\Controllers\HomeController:dispatch')->setName('modify');
+

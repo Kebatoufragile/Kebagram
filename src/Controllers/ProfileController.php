@@ -29,5 +29,20 @@ final class ProfileController extends AbstractController{
 
     }
 
+    public function modifyProfile(Request $request, Response $response, $args){
+        if(isset($_SESSION['user'])){
+            if(isset($_POST['emailProfile']) && isset($_POST['firstnameProfile']) && isset($_POST['nameProfile'])){
+
+            }else{
+                $this->view['view']->render($response, 'profile.html.twig', array(
+                    'user' => $_SESSION['user'],
+                    'error' => 'Informations are missing.'
+                ));
+            }
+        }else
+            header('Location: index.php');
+
+    }
+
 
 }
