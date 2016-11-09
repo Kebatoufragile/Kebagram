@@ -64,6 +64,10 @@ body{
     top:150px;
 }
 
+h2{
+    font-weight: bold;
+}
+
 @media screen and (max-device-width: 600px) {
     .container-suggestions{
         visibility: hidden;
@@ -77,5 +81,9 @@ body{
     }
     .container-boutons-media{
         visibility: visible;
+    }
+    .panel-profile{
+        margin-left:5%;
+        margin-right:5%;
     }
 }

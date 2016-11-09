@@ -9,21 +9,19 @@
             <form action="addpic/upload" method="post" enctype="multipart/form-data">
 
                 <div class="form-group center-block">
-                    <label for="picture">Picture to </label>
+                    <label for="picture">Choose a picture to upload (Max 900x1200)</label>
                     <input type="file" id="picture" name="picture" placeholder="Choose a picture to upload" required>
                 </div>
 
                 <div class="form-group">
                     <label for="name">Choose a name for your kebab</label>
-                    <input id="name" name="name" type="text" placeholder="Add a name for your kebab" required>
+                    <input class="form-control" d="name" name="name" type="text" placeholder="Add a name for your kebab" required><br>
                     <label for="tags">Choose multiple tags</label>
-                    <input id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse'" required>
+                    <input class="form-control" id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse')" required>
                     <br>
                     <label for='desc'>Add a description</label>
                     <br>
-                    <textarea name='desc' id='desc' rows="10" cols="50" required>
-
-                    </textarea>
+                    <textarea class="form-control" name='desc' id='desc' rows="10" cols="50" required></textarea>
                 </div>
 
                 <button class="btn btn-default" type="submit">Add picture</button>
