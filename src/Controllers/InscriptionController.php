@@ -37,7 +37,7 @@ final class InscriptionController extends AbstractController
 
     public function register(){
 
-        if (isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
+        if (isset($_POST['username']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
           $credentials = [
               //'username' => $_POST['username'],
               'password' => $_POST['mdp'],
