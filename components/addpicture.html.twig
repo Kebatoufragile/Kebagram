@@ -2,11 +2,29 @@
 
 {% block content %}
 
-    <div class="panel panel-warning panel-profile">
+    {# error #}
+    {% if notlog != false %}
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{ notlog }}
+        </div>
+    {% else %}
+        <div class="panel panel-warning panel-profile">
+
         <div class="panel-heading"><h1 class="panel-title">Add Picture</h1></div>
 
+        {# image non uploadee #}
+        {% if error != false %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{ error }}
+            </div>
+        {% endif %}
+
         <div class="panel-body text-center">
-            <form action="addpic/upload" method="post" enctype="multipart/form-data">
+            <form action="upload" method="post" enctype="multipart/form-data">
 
                 <div class="form-group center-block">
                     <label for="picture">Choose a picture to upload (Max 900x1200)</label>
@@ -15,7 +33,7 @@
 
                 <div class="form-group">
                     <label for="name">Choose a name for your kebab</label>
-                    <input class="form-control" d="name" name="name" type="text" placeholder="Add a name for your kebab" required><br>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Add a name for your kebab" required><br>
                     <label for="tags">Choose multiple tags</label>
                     <input class="form-control" id="tags" name="tags" type="text" placeholder="Add multiple tags (example : 'kebab, pizza, corse')" required>
                     <br>
@@ -29,6 +47,7 @@
             </form>
 
         </div>
+    {% endif %}
     </div>
 
 {% endblock %}

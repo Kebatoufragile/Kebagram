@@ -22,6 +22,15 @@
 
         <div class="container container-listkebabs">
 
+            {# gestion de succes #}
+            {% if success != false %}
+                <div class="alert alert-success" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{ success }}
+                </div>
+            {% endif %}
+
             {% if kebabslist|length > 0 %}
                 {% for publi in kebabslist %}
                     <div class="panel panel-primary container-kebab">
