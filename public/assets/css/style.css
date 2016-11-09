@@ -40,6 +40,7 @@
 
 body{
     padding-top:70px;
+    padding-bottom:70px;
 }
 
 .panel-profile{
@@ -62,6 +63,13 @@ body{
 .fixed-media{
     position:fixed;
     top:150px;
+}
+
+.navbar-footer{
+    text-align:center;
+    font-size:1.7rem;
+    color:white;
+    height:20px;
 }
 
 h2{
