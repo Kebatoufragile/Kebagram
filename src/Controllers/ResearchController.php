@@ -32,13 +32,13 @@ final class ResearchController extends AbstractController
 
             $kebabsObjects = array();
             $kebabs = array();
-            foreach($tags as $tag){
+            foreach($tags as $tag)
                 array_push($kebabsObjects,  Pictures::where('uId', 'like', $tag->pictureID)->get());
-            }
-
-            for($i=0; $i<count($kebabsObjects); $i++){
+            for($i=0; $i<count($kebabsObjects); $i++)
               array_push($kebabs, $kebabsObjects[$i][0]);
-            }
+            $kebabs = array_unique($kebabs);
+
+
             if(isset($_SESSION['user'])){
                 $this->view['view']->render($response, 'search.html.twig', array(
                     'user' => $_SESSION['user'],
