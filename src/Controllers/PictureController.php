@@ -5,6 +5,7 @@ use App\Models\User;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Pictures;
+use App\Models\Tag;
 use Illuminate\Database\Capsule\Manager as BD;
 
 define('TARGET', "../public/assets/img/kebabs/");
@@ -98,6 +99,17 @@ final class PictureController extends AbstractController{
                                     $pic->Date = date("m.d.y");
                                     $pic->AuthorKey = $_SESSION["userid"];
                                     $pic->save();
+
+
+                                    $stringTags = filter_var($_POST['tags'], FILTER_SANITIZE_STRING);
+                                    $arrayTags = explode(' ', $stringTags);
+
+                                    foreach ($arrayTags as $value) {
+                                      $tag = new Tag();
+                                      $tag->pictureID = Pictures::where('Link', 'like', $nomImage)->first()->uId;
+                                      $tag->tag = $value;
+                                      $tag->save();
+                                    }
 
                                     // success
                                     return $this->view->render($response, 'homepage.html.twig', array(
