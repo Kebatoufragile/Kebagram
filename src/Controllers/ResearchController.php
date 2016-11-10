@@ -30,10 +30,15 @@ final class ResearchController extends AbstractController
             $users = User::where('username', 'like', $search)->get();
             $tags = Tag::where('Tag', 'like', $search)->get();
 
+            $kebabsObjects = array();
             $kebabs = array();
-            foreach($tags as $tag)
-                $kebabs = array_merge($kebabs, Pictures::where('uId', 'like', $tag->uId)->get());
+            foreach($tags as $tag){
+                array_push($kebabsObjects,  Pictures::where('uId', 'like', $tag->pictureID)->get());
+            }
 
+            for($i=0; $i<count($kebabsObjects); $i++){
+              array_push($kebabs, $kebabsObjects[$i][0]);
+            }
             if(isset($_SESSION['user'])){
                 $this->view['view']->render($response, 'search.html.twig', array(
                     'user' => $_SESSION['user'],
