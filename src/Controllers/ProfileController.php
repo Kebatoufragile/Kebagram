@@ -20,10 +20,12 @@ final class ProfileController extends AbstractController{
 
     public function dispatch(Request $request, Response $response, $args){
 
+        // if logged
         if(isset($_SESSION['user'])){
             $this->view['view']->render($response, 'profile.html.twig', array(
                 'user' => $_SESSION['user'],
             ));
+
         }else
             $this->view['view']->render($response, 'profile.html.twig', array());
 
