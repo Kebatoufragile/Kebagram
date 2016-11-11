@@ -18,7 +18,7 @@ $app->post('/upload', 'App\Controllers\PictureController:upload')->setName('uplo
 
 $app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
 
-$app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
+$app->post('/signup', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
 
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 

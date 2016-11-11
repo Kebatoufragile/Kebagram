@@ -88,6 +88,12 @@ body{
     height:20px;
 }
 
+.panel-register{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 h2{
     font-weight: bold;
 }
@@ -109,5 +115,8 @@ h2{
     .panel-profile{
         margin-left:5%;
         margin-right:5%;
+    }
+    .panel-register{
+        width:90%;
     }
 }
