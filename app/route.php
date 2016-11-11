@@ -18,7 +18,7 @@ $app->post('/upload', 'App\Controllers\PictureController:upload')->setName('uplo
 
 $app->get('/signup', 'App\Controllers\InscriptionController:dispatch')->setName('signup');
 
-$app->post('/signup/submit', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
+$app->post('/signup', 'App\Controllers\InscriptionController:dispatchSubmit')->setName('submit');
 
 $app->get('/users', 'App\Controllers\UserController:dispatch')->setName('userpage');
 
@@ -29,6 +29,8 @@ $app->post('/modify', 'App\Controllers\ProfileController:modifyProfile')->setNam
 $app->post('/modifyPassword', 'App\Controllers\ProfileController:modifyPassword')->setName('modifyPassword');
 
 $app->post('/search', 'App\Controllers\ResearchController:dispatch')->setName('search');
+
+$app->post('/modifyPicture', 'App\Controllers\ProfileController:modifyPicture')->setName('modifyPicture');
 
 
 // routes for error handling
@@ -41,3 +43,5 @@ $app->get('/modify', 'App\Controllers\HomeController:dispatch')->setName('modify
 $app->get('/modifyPassword', 'App\Controllers\HomeController:dispatch')->setName('modifyPassword');
 
 $app->get('/search', 'App\Controllers\HomeController:dispatch')->setName('search');
+
+$app->get('/modifyPicture', 'App\Controllers\HomeController:dispatch')->setName('modifyPicture');

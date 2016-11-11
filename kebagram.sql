@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 10 Novembre 2016 à 03:30
--- Version du serveur :  10.1.13-MariaDB
--- Version de PHP :  7.0.8
+-- Généré le :  Ven 11 Novembre 2016 à 14:28
+-- Version du serveur :  10.1.16-MariaDB
+-- Version de PHP :  7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,13 +36,6 @@ CREATE TABLE `activations` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Contenu de la table `activations`
---
-
-INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`, `created_at`, `updated_at`) VALUES
-(3, 4, 'nC35EfnUTLAnbn8Eev5wBwgnpyzxGgQZ', 1, '2016-11-10 01:19:27', '2016-11-10 01:19:26', '2016-11-10 01:19:27');
-
 -- --------------------------------------------------------
 
 --
@@ -71,15 +64,6 @@ CREATE TABLE `persistences` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Contenu de la table `persistences`
---
-
-INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`) VALUES
-(3, 4, 'kkJXFIcJkwpE1wRDGQxBvfZJgTMY4Fht', '2016-11-10 01:19:44', '2016-11-10 01:19:44'),
-(5, 4, 'MJpoZymMMe9TnXujY7y8xIdUa6xEKM3K', '2016-11-10 02:26:39', '2016-11-10 02:26:39'),
-(6, 4, 't5BCG0syjkadVNewkH8jfNpBEsDgg3HH', '2016-11-10 02:26:39', '2016-11-10 02:26:39');
-
 -- --------------------------------------------------------
 
 --
@@ -96,15 +80,6 @@ CREATE TABLE `pictures` (
   `updated_at` date NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table images pour le projet Kebabgram';
-
---
--- Contenu de la table `pictures`
---
-
-INSERT INTO `pictures` (`uId`, `Name`, `Link`, `Desc`, `Date`, `AuthorKey`, `updated_at`, `created_at`) VALUES
-(2, 'Test1', 'c3286c82184d0eefbf313235d5914d9d.jpg', 'First test tags', '2011-10-16', 4, '2016-11-10', '2016-11-10'),
-(3, 'Test2', '79d70299403973389f1352e22e2e3d22.jpg', 'Second test', '2011-10-16', 4, '2016-11-10', '2016-11-10'),
-(4, 'Search test', '9c35382d7809f22798ae89e76ff03815.png', 'Search test', '2011-10-16', 4, '2016-11-10', '2016-11-10');
 
 -- --------------------------------------------------------
 
@@ -161,17 +136,6 @@ CREATE TABLE `tag` (
   `pictureID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `tag`
---
-
-INSERT INTO `tag` (`tag`, `pictureID`) VALUES
-('Test1', 2),
-('Corse1', 2),
-('Test2', 3),
-('Corse2', 3),
-('Test1', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -203,15 +167,9 @@ CREATE TABLE `users` (
   `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `profilePic` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES
-(4, 'a@a.a', 'a', '$2y$10$aaOAt8qVJGX7eg1cMn.Esegk3QmWUhOJQUVfRpLB26sl8EKpqki4u', NULL, '2016-11-10 02:26:39', 'a', 'a', '2016-11-10 01:19:26', '2016-11-10 02:26:39');
 
 --
 -- Index pour les tables exportées
@@ -283,17 +241,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT pour la table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `uId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `reminders`
 --
@@ -308,12 +266,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
