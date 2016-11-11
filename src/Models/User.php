@@ -11,7 +11,7 @@ class User extends Model
 
   public static function getKebabs(){
     // recuperation des images
-    $pictures =Pictures::all();
+    $pictures = Pictures::orderBy('uId', 'DESC')->get();
     $kebabslist = array();
 
     // recuperation des tags et des usernames
