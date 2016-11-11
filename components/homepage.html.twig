@@ -34,7 +34,13 @@
             {% if kebabslist|length > 0 %}
                 {% for publi in kebabslist %}
                     <div class="panel panel-primary container-kebab">
-                        <div class="panel-heading"><h1 class="panel-title"><strong>{{ publi[0].Name }}</strong> <element class="pull-right">@{{ publi[0].username }}</element></h1></div>
+
+                        {# if image de profil #}
+                        {% if publi[0].profilePic != false %}
+                            <div class="panel-heading"><h1 class="panel-title"><strong>{{ publi[0].Name }}</strong> <element class="pull-right">@{{ publi[0].username }}</element><img class="pull-right img-circle img-userkebab" src="/Kebagram/public/assets/img/avatars/{{ publi[0].profilePic }}"></h1></div>
+                        {% else %}
+                            <div class="panel-heading"><h1 class="panel-title"><strong>{{ publi[0].Name }}</strong> <element class="pull-right">@{{ publi[0].username }}</element><img class="pull-right img-circle img-userkebab" src="/Kebagram/public/assets/default.jpg"></h1></div>
+                        {% endif %}
 
                         {# img #}
                         <div class="panel-body">

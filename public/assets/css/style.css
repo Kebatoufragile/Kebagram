@@ -94,6 +94,13 @@ body{
     margin-right:auto;
 }
 
+.img-userkebab{
+    width:30px;
+    height:30px;
+    margin-top:-5px;
+    margin-right:5px;
+}
+
 h2{
     font-weight: bold;
 }

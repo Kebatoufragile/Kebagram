@@ -21,7 +21,13 @@
 
                     {% for u in users %}
                         <li class="list-group-item">
-                            <p>@{{ u.username }}</p>
+
+                            {% if u.profilePic != false %}
+                                <p><img class="img-circle" width="40px" src="/Kebagram/public/assets/img/avatars/{{ u.profilePic }}"/>&nbsp;&nbsp;@{{ u.username }}</p>
+                            {% else %}
+                                <p><img class="img-circle" width="40px" src="/Kebagram/public/assets/default.jpg"/>&nbsp;&nbsp;@{{ u.username }}</p>
+                            {% endif %}
+
                         </li>
                     {% endfor %}
 
@@ -44,7 +50,13 @@
 
                     {% for k in kebabs %}
                         <div class="panel panel-primary container-kebab">
-                            <div class="panel-heading"><h1 class="panel-title"><strong>{{ k[0].Name }}</strong> <element class="pull-right">@{{ k[0].username }}</element></h1></div>
+
+                            {# if image de profil #}
+                            {% if k[0].profilePic != false %}
+                                <div class="panel-heading"><h1 class="panel-title"><strong>{{ k[0].Name }}</strong> <element class="pull-right">@{{ k[0].username }}</element><img class="pull-right img-circle img-userkebab" src="/Kebagram/public/assets/img/avatars/{{ k[0].profilePic }}"></h1></div>
+                            {% else %}
+                                <div class="panel-heading"><h1 class="panel-title"><strong>{{ k[0].Name }}</strong> <element class="pull-right">@{{ k[0].username }}</element><img class="pull-right img-circle img-userkebab" src="/Kebagram/public/assets/default.jpg"></h1></div>
+                            {% endif %}
 
                             {# img #}
                             <div class="panel-body">

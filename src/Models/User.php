@@ -17,7 +17,9 @@ class User extends Model
 
         // recuperation des tags et des usernames
         foreach ($pictures as $picture) {
-            $picture->username = User::where('id', 'like', $picture->AuthorKey)->first()->username;
+            $u = User::where('id', 'like', $picture->AuthorKey)->first();
+            $picture->username = $u->username;
+            $picture->profilePic = $u->profilePic;
             $kebabslist[] = array($picture, Tag::where("pictureId", "like", $picture->uId)->get());
         }
 
@@ -40,7 +42,9 @@ class User extends Model
         foreach ($tags as $tag){
             $p = Pictures::orderBy('uId', 'DESC')->where('uId', 'like', $tag->pictureID)->get();
             foreach($p as $picture){
-                $picture->username = User::where('id', 'like', $picture->AuthorKey)->first()->username;
+                $u = User::where('id', 'like', $picture->AuthorKey)->first();
+                $picture->username = $u->username;
+                $picture->profilePic = $u->profilePic;
                 $pictures[] = $picture;
             }
         }
