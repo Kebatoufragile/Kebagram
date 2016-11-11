@@ -3,3 +3,4 @@ storage/
 conf/
 public/assets/img/
 config/database.php
+vendor/
