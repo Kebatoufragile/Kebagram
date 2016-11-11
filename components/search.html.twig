@@ -31,9 +31,7 @@
 
         </div>
 
-        <div class="panel panel-primary panel-researchtags pull-right">
-
-            <div class="panel-heading"><h1 class="panel-title">Kebabs</h1></div>
+        <div class="panel panel-researchtags pull-right">
 
             <ul class="list-group">
 
@@ -45,10 +43,41 @@
                 {% else %}
 
                     {% for k in kebabs %}
-                        <li class="list-group-item">
+                        <div class="panel panel-primary container-kebab">
+                            <div class="panel-heading"><h1 class="panel-title"><strong>{{ k[0].Name }}</strong> <element class="pull-right">@{{ k[0].username }}</element></h1></div>
+
+                            {# img #}
+                            <div class="panel-body">
+                                <img class="img-responsive" src="/Kebagram/public/assets/img/kebabs/{{ k[0].Link }}"><br>
+                            </div>
+
+                            <ul class="list-group">
+
+                                {# desc #}
+                                <li class="list-group-item">
+                                    <p>{{ k[0].Desc }}</p>
+                                </li>
+
+                                {# tags #}
+                                <li class="list-group-item">
+                                    <p class="textgrise">
+                                        {% for tag in k[1] %}
+                                            #{{ tag.tag }}
+                                        {% endfor %}
+                                    </p>
+                                </li>
+
+                                {# comments #}
+                                <li class="list-group-item">
+                                    Commentaires
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--<li class="list-group-item">
                             <img class="img-responsive" src="/Kebagram/public/assets/img/kebabs/{{ k.Link }}">
                             
-                        </li>
+                        </li>-->
                     {% endfor %}
 
                 {% endif %}

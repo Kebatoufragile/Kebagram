@@ -28,16 +28,8 @@ final class ResearchController extends AbstractController
             $search = '%'.filter_var($_POST['search'], FILTER_SANITIZE_STRING).'%';
 
             $users = User::where('username', 'like', $search)->get();
-            $tags = Tag::where('Tag', 'like', $search)->get();
 
-            $kebabsObjects = array();
-            $kebabs = array();
-            foreach($tags as $tag)
-                array_push($kebabsObjects,  Pictures::where('uId', 'like', $tag->pictureID)->get());
-            for($i=0; $i<count($kebabsObjects); $i++)
-              array_push($kebabs, $kebabsObjects[$i][0]);
-            $kebabs = array_unique($kebabs);
-
+            $kebabs = User::getKebabsWithTag($search);
 
             if(isset($_SESSION['user'])){
                 $this->view['view']->render($response, 'search.html.twig', array(
