@@ -27,13 +27,24 @@
                             </div>
                         {% endif %}
 
+                        <h2 class="text-center">{{ user.username }}</h2>
+
                         {# image #}
                         {% if user.profilePic == false %}
                             <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/default.jpg" alt="Image profile">
                         {% else %}
                             <img class="img-responsive img-circle center-block" src="/Kebagram/public/assets/img/avatars/{{ user.profilePic }}" alt="Image profile">
                         {% endif %}
-                        <h2 class="text-center">{{ user.username }}</h2>
+
+                        <form class="text-center" action="modifyPicture" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="pictureProfile" >Modify your profile picture (Max size : 1500*1500px)</label>
+                                <input class="form-control" id="pictureProfile" name="pictureProfile" type="file" required/>
+                            </div>
+
+                            <button class="btn btn-warning" type="submit">Upload</button>
+                        </form>
+
                         <br>
                     </div>
 
