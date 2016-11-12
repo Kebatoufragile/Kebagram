@@ -46,17 +46,46 @@ final class ProfileController extends AbstractController{
             if(isset($_POST['emailProfile']) && isset($_POST['firstnameProfile']) && isset($_POST['nameProfile'])){
 
                 $u = $_SESSION['user'];
-                $u->email = filter_var($_POST['emailProfile'], FILTER_SANITIZE_EMAIL);
-                $u->first_name = filter_var($_POST['firstnameProfile'], FILTER_SANITIZE_STRING);
-                $u->last_name = filter_var($_POST['nameProfile'], FILTER_SANITIZE_STRING);
-                $u->save();
+                if(strcmp($_POST['emailProfile'], $u->email) != 0){
 
-                $_SESSION['user'] = User::where("id", "like", $_SESSION['userid'])->first();
+                    if(is_null(User::where('email', 'like', $_POST['emailProfile'])->first())){
 
-                $this->view['view']->render($response, 'profile.html.twig', array(
-                    'user' => $_SESSION['user'],
-                    'success' => 'Your profile has been updated.'
-                ));
+                        $u->email = filter_var($_POST['emailProfile'], FILTER_SANITIZE_EMAIL);
+                        $u->first_name = filter_var($_POST['firstnameProfile'], FILTER_SANITIZE_STRING);
+                        $u->last_name = filter_var($_POST['nameProfile'], FILTER_SANITIZE_STRING);
+                        $u->save();
+
+                        $_SESSION['user'] = User::where("id", "like", $_SESSION['userid'])->first();
+
+                        $this->view['view']->render($response, 'profile.html.twig', array(
+                            'user' => $_SESSION['user'],
+                            'success' => 'Your profile has been updated.'
+                        ));
+
+                    } else{
+
+                        $this->view['view']->render($response, 'profile.html.twig', array(
+                            'user' => $_SESSION['user'],
+                            'error' => 'Mail address already used.'
+                        ));
+
+                    }
+
+                }else{
+
+                    $u->first_name = filter_var($_POST['firstnameProfile'], FILTER_SANITIZE_STRING);
+                    $u->last_name = filter_var($_POST['nameProfile'], FILTER_SANITIZE_STRING);
+                    $u->save();
+
+                    $_SESSION['user'] = User::where("id", "like", $_SESSION['userid'])->first();
+
+                    $this->view['view']->render($response, 'profile.html.twig', array(
+                        'user' => $_SESSION['user'],
+                        'success' => 'Your profile has been updated.'
+                    ));
+                    
+                }
+
 
             }else{
 

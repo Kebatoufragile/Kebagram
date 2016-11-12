@@ -7,6 +7,15 @@
     <div class="panel panel-primary panel-register text-center">
         <div class="panel-heading"><h1 class="panel-title">Registration</h1></div>
         <div class="panel-body">
+
+            {% if error != false %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{ error }}
+            </div>
+            {% endif %}
+
             <form action="signup" method="post" enctype="multipart/form-data">
 
                 <div class="form-group">

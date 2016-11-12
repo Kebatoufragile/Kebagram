@@ -49,35 +49,46 @@ final class InscriptionController extends AbstractController
             $fn = filter_var($_POST['prenom'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-            if($username && $mdp && $ln && $fn && $email){
-                $credentials = [
-                    'password' => $mdp,
-                    'last_name' => $ln,
-                    'first_name' => $fn,
-                    'email' => $email
-                    //date de naissance ?
-                ];
+            if(is_null(User::where('email', 'like', $email)->first())){
 
-                $this->sentinel->registerAndActivate($credentials);
+                if(is_null(User::where('username', 'like', $username)->first())){
 
-                // profile pic
-                if(!empty($_FILES['profilepic']['name']))
-                    $profilepic = $this->upload($username);
-                else
-                    $profilepic = 'default';
+                    if($username && $mdp && $ln && $fn && $email){
+                        $credentials = [
+                            'password' => $mdp,
+                            'last_name' => $ln,
+                            'first_name' => $fn,
+                            'email' => $email
+                            //date de naissance ?
+                        ];
 
-                $u=User::where('email', 'like', $email)->first();
-                $u->username=$username;
+                        $this->sentinel->registerAndActivate($credentials);
 
-                if(strcmp($profilepic, "default") !== 0)
-                    $u->profilePic = $profilepic;
-                $u->save();
-                return 3;
+                        // profile pic
+                        if(!empty($_FILES['profilepic']['name']))
+                            $profilepic = $this->upload($username);
+                        else
+                            $profilepic = 'default';
 
-            } else {
-                return 1;
-                //echo '<script>alert("Les données ne sont pas bonnes")';
-            }
+                        $u=User::where('email', 'like', $email)->first();
+                        $u->username=$username;
+
+                        if(strcmp($profilepic, "default") !== 0)
+                            $u->profilePic = $profilepic;
+                        $u->save();
+                        return 3;
+
+                    } else {
+                        return 1;
+                        //echo '<script>alert("Les données ne sont pas bonnes")';
+                    }
+
+                }else
+                    return 5;
+
+            }else
+                return 4;
+
 
         } else {
             return 2;
@@ -89,18 +100,33 @@ final class InscriptionController extends AbstractController
     public function dispatchSubmit(Request $request, Response $response, $args){
 
         $res = $this->register();
-        if ($res = 3) {
-            $this->view['view']->render($response, 'homepage.html.twig', array(
-                'success' => "You have been successfully registered. You can now try log in."
-            ));
-        } elseif ($res = 2){
-            $this->view['view']->render($response, 'register.html.twig', array(
-                'error' => 'Unable to register you, informations are missing, please try again.'
-            ));
-        } else {
-            $this->view['view']->render($response, 'register.html.twig', array(
-                'error' => 'Unable to register you, informations are wrong, please try again.'
-            ));
+
+        switch($res) {
+            case 2:
+                $this->view['view']->render($response, 'register.html.twig', array(
+                    'error' => 'Unable to register you, informations are missing, please try again.'
+                ));
+                break;
+            case 3:
+                $this->view['view']->render($response, 'homepage.html.twig', array(
+                    'success' => "You have been successfully registered. You can now try log in."
+                ));
+                break;
+            case 4:
+                $this->view['view']->render($response, 'register.html.twig', array(
+                    'error' => 'Mail address already used.'
+                ));
+                break;
+            case 5:
+                $this->view['view']->render($response, 'register.html.twig', array(
+                    'error' => 'Username already used.'
+                ));
+                break;
+            default:
+                $this->view['view']->render($response, 'register.html.twig', array(
+                    'error' => 'Unable to register you, informations are wrong, please try again.'
+                ));
+                break;
         }
 
         return $response;
