@@ -1,9 +1,3 @@
-COLLIN Thibaut
-DUPUIS Sébastien
-GIOVANNELLI Alexis
-
-Projet Kebagram
-
 # Kebagram
 
 Welcome to the Kebagram project, made by Sébastien Dupuis, Alexis Giovannelli and Thibaut Collin (Kebabtoufragile group).
